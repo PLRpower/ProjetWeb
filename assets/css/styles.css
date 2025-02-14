@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+body {
+    margin: 0;
+    color: var(--neutral-600);
+    font-family: "Plus Jakarta Sans", serif;
+    font-size: 18px;
+    line-height: 1.6em;
+}
+
+h1 {
+    margin-bottom: 24px;
+    font-size: 58px;
+    line-height: 1.2em;
+}
+
+h2 {
+    margin-bottom: 16px;
+    font-size: 42px;
+    line-height: 1.4em;
+}
+
+h3 {
+    margin-bottom: 12px;
+    font-size: 26px;
+    line-height: 1.4em;
+}
+
+h4 {
+    margin-bottom: 16px;
+    font-size: 23px;
+    line-height: 1.4em;
+}
+
+h5 {
+    margin-bottom: 16px;
+    font-size: 18px;
+    line-height: 1.3em;
+}
+
+h6 {
+    margin-bottom: 10px;
+    font-size: 16px;
+    line-height: 1.4em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--neutral-800);
+    margin-top: 0;
+    font-weight: 700;
+}
+
+.paragraph__small {
+    font-size: 14px;
+    line-height: 1.71429em;
+}
+
+.paragraph__large {
+    font-size: 24px;
+    line-height: 1.58333em;
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    color: var(--primary-1);
+    text-decoration: underline;
+    transition: color .35s;
+    outline: 0;
+}
+
+a:hover {
+    color: var(--neutral-800);
+}
+
+main {
+    min-height: 100vh;
+}
+
+/* Logo pour le header et le footer */
+
+.logo:hover img {
+    transform: scale(.95);
+}
+
+.logo img {
+    display: block;
+    height: auto;
+    width: 250px;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Problème avec la police dans les inputs ?!? */
+
+input {
+    font-family: "Plus Jakarta Sans", serif;
+}
+
+/* Icones Google */
+
+.material-symbols-rounded {
+    display: inline-flex !important;
+    vertical-align: middle !important;
+}
+
+
+/* Variables CSS */
+:root {
+    --primary-1: #e2b043;
+    --secondary-1: #bf912f;
+    --secondary-2: #efefff;
+    --neutral-100: white;
+    --neutral-200: #fbfaf7;
+    --neutral-300: #f1eee6;
+    --neutral-400: #dad5c3;
+    --neutral-500: #bfae69;
+    --neutral-600: #908249;
+    --neutral-700: #84712e;
+    --neutral-800: #55491a;
+    --neutral-900: #000000;
+    --general-shadow-02: #0f086a0a;
+    --general-shadow-01: #0f086a08;
+    --general-shadow-03: #0f086a0f;
+    --general-shadow-05: #0f086a1f;
+    --general-shadow-06: #0f086a3d;
+}

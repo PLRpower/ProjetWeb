@@ -1,0 +1,54 @@
+/* Buttons */
+
+.button__primary {
+    background-color: var(--primary-1);
+    color: var(--neutral-100);
+    border-radius: 12px;
+    padding: 26px 38px;
+    font-weight: 700;
+    line-height: 20px;
+    text-decoration: none;
+    transition: color .35s, transform .3s, box-shadow .3s, background-color .3s;
+    display: inline-block;
+}
+
+.button__primary.button--small, .button__secondary.button--small {
+    padding: 20px 24px;
+    font-size: 16px;
+    line-height: 18px;
+}
+
+.button__secondary {
+    background-color: var(--neutral-100);
+    color: var(--neutral-800);
+    text-align: center;
+    transform-style: preserve-3d;
+    border-radius: 12px;
+    padding: 26px 38px;
+    font-size: 18px;
+    line-height: 20px;
+    text-decoration: none;
+    transition: transform .35s, box-shadow .35s, color .35s, border-color .35s;
+    box-shadow: 0 4px 10px #14142b0a;
+}
+
+.button__icon {
+    transition: transform 0.2s ease-in-out;
+}
+
+.button__primary:hover .button__icon {
+    transform: translateX(6px);
+}
+
+.button__primary:hover {
+    background-color: var(--secondary-1);
+    color: var(--neutral-100);
+    transform: scale(.95);
+}
+
+.button__secondary:hover {
+    border-color: var(--primary-1);
+    color: var(--primary-1);
+    transform: scale(.95);
+    box-shadow: 0 4px 20px #14142b0a;
+}
