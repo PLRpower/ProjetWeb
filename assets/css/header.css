@@ -6,6 +6,7 @@
     top: 0;
     left: 0;
     background-color: var(--neutral-100);
+    z-index: 10;
 }
 
 .header__container {
@@ -37,7 +38,6 @@
     display: flex;
     background-color: var(--neutral-100);
     width: 100%;
-    z-index: 10;
 }
 
 .header__links__left {

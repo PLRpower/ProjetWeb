@@ -50,6 +50,28 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
 }
 
+@media screen and (max-width: 30rem) {
+    h1 {
+        font-size: 36px;
+        line-height: 1.2em;
+    }
+}
+
+@media screen and (max-width: 48rem) {
+    h1 {
+        margin-bottom: 16px;
+        font-size: 40px;
+        line-height: 1.3em;
+    }
+}
+
+@media screen and (max-width: 64rem) {
+    h1 {
+        margin-bottom: 20px;
+        font-size: 50px;
+    }
+}
+
 .paragraph__small {
     font-size: 14px;
     line-height: 1.71429em;
@@ -116,9 +138,9 @@ input {
     --neutral-300: #f1eee6;
     --neutral-400: #dad5c3;
     --neutral-500: #bfae69;
-    --neutral-600: #908249;
-    --neutral-700: #84712e;
-    --neutral-800: #55491a;
+    --neutral-600: #746734;
+    --neutral-700: #64572c;
+    --neutral-800: #3b3317;
     --neutral-900: #000000;
     --general-shadow-02: #0f086a0a;
     --general-shadow-01: #0f086a08;
