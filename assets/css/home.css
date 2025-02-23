@@ -2,8 +2,8 @@
     display: flex;
     max-width: 1268px;
     text-wrap: balance;
-    margin: 50px auto;
-    padding: 24px;
+    margin: auto;
+    padding: 50px 24px;
 }
 
 .hero__image {
@@ -17,7 +17,7 @@
 
 .hero__scroll {
     position: relative;
-    height: 50px;
+    height: 30px;
     overflow: hidden;
     max-width: 80%;
 }
@@ -30,7 +30,7 @@
 
 .hero__scroll img {
     margin-right: 50px;
-    height: 50px;
+    height: 30px;
 }
 
 .rift__background {
@@ -38,7 +38,39 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    mask-image: radial-gradient(circle, white 50%, transparent 100%);
+}
+
+.cta__container {
+    background-color: var(--primary-1);
+}
+
+.cta__content {
+    padding: 150px 24px;
+    display: flex;
+    align-items: center;
+    max-width: 1268px;
+    margin: auto;
+}
+
+.cta__title {
+    width: 50%;
+    color: var(--neutral-100);
+}
+
+.cta__form {
+    position: relative;
+    width: 50%;
+}
+
+.cta__form .button__primary {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    width: initial;
+}
+
+.cta__form input {
+    font-size: 18px;
 }
 
 @keyframes scrollImages {
@@ -51,6 +83,10 @@
 }
 
 @media screen and (max-width: 48rem) {
+    .hero__scroll {
+        max-width: 100%;
+    }
+
     .hero__container {
         flex-direction: column;
         margin-top: 0;
@@ -58,6 +94,17 @@
     }
 
     .hero__image {
+        width: 100%;
+    }
+
+    .cta__content {
+        flex-direction: column;
+        gap: 30px;
+        padding: 70px 24px;
+
+    }
+
+    .cta__title, .cta__form {
         width: 100%;
     }
 }

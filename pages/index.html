@@ -8,14 +8,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet"/>
 
     <link href="/assets/css/styles.css" rel="stylesheet">
-    <link href="/assets/css/header.css" rel="stylesheet">
+    <link href="/assets/css/typography.css" rel="stylesheet">
     <link href="/assets/css/buttons.css" rel="stylesheet">
+    <link href="/assets/css/offers.css" rel="stylesheet">
+    <link href="/assets/css/header.css" rel="stylesheet">
     <link href="/assets/css/footer.css" rel="stylesheet">
     <link href="/assets/css/home.css" rel="stylesheet">
 </head>
 
 <body>
-
 <header class="header">
     <section class="header__container">
         <div class="header__menu">
@@ -41,13 +42,13 @@
                         <span class="material-symbols-rounded">search</span>
                     </button>
                 </form>
-                <a class="button__primary button--small" href="#">Se connecter
+                <a class="button__primary button--small" href="#" id="headerLogin">Se connecter
                     <span class="material-symbols-rounded button__icon">arrow_forward</span>
                 </a>
             </div>
         </div>
     </section>
-    <progress class="visible" id="scrollProgress" max="100" value="0"></progress>
+    <progress id="scrollProgress" max="100" value="0"></progress>
 </header>
 
 <main>
@@ -75,9 +76,104 @@
     <section>
         <img alt="Bg" class="rift__background" src="/assets/images/background.webp">
     </section>
+
+    <section class="cta__container">
+        <div class="cta__content">
+            <h2 class="cta__title">Connectez-vous dès maintenant</h2>
+            <form class="cta__form">
+                <label>
+                    <input placeholder="Adresse e-mail" type="email">
+                </label>
+                <input class="button__primary button--small" type="submit" value="Se connecter">
+            </form>
+        </div>
+    </section>
+
+    <section class="offers__container">
+        <div class="offers__header">
+            <h2>Les dernières offres de stages</h2>
+            <a class="button__secondary" href="#">Voir toutes les offres
+                <span class="material-symbols-rounded button__icon">arrow_forward</span>
+            </a>
+        </div>
+        <article class="offers__cards">
+            <a class="offers__card" href="#">
+                <p class="offers__card__company">Siemens</p>
+                <h3 class="offers__card__title">Stage en systèmes embarqués</h3>
+                <div class="offers__card__tags">
+                    <p>
+                        <span class="material-symbols-rounded">location_on</span>
+                        Strasbourg, France
+                    </p>
+                    <p>
+                        <span class="material-symbols-rounded">schedule</span>
+                        Stage
+                    </p>
+                </div>
+                <button class="button__primary">Postuler
+                    <span class="material-symbols-rounded button__icon">arrow_forward</span>
+                </button>
+            </a>
+
+            <a class="offers__card" href="#">
+                <p class="offers__card__company">Cisco</p>
+                <h3 class="offers__card__title">Stage en Réseaux/Systèmes</h3>
+                <div class="offers__card__tags">
+                    <p>
+                        <span class="material-symbols-rounded">location_on</span>
+                        Paris, France
+                    </p>
+                    <p>
+                        <span class="material-symbols-rounded">schedule</span>
+                        Stage
+                    </p>
+                </div>
+                <button class="button__primary">Postuler
+                    <span class="material-symbols-rounded button__icon">arrow_forward</span>
+                </button>
+            </a>
+
+            <a class="offers__card" href="#">
+                <p class="offers__card__company">GlobalExam</p>
+                <h3 class="offers__card__title">Stage en développement web</h3>
+                <div class="offers__card__tags">
+                    <p>
+                        <span class="material-symbols-rounded">location_on</span>
+                        Londres, Angleterre
+                    </p>
+                    <p>
+                        <span class="material-symbols-rounded">schedule</span>
+                        Stage
+                    </p>
+                </div>
+                <button class="button__primary">Postuler
+                    <span class="material-symbols-rounded button__icon">arrow_forward</span>
+                </button>
+            </a>
+
+            <a class="offers__card" href="/details-offre">
+                <p class="offers__card__company">Siemens</p>
+                <h3 class="offers__card__title">Stage en POO</h3>
+                <div class="offers__card__tags">
+                    <p>
+                        <span class="material-symbols-rounded">location_on</span>
+                        Strasbourg, France
+                    </p>
+                    <p>
+                        <span class="material-symbols-rounded">schedule</span>
+                        CDI
+                    </p>
+                </div>
+                <button class="button__primary">Postuler
+                    <span class="material-symbols-rounded button__icon">arrow_forward</span>
+                </button>
+            </a>
+
+        </article>
+    </section>
 </main>
 
-<footer>
+<footer class="footer">
     <section class="footer__container">
         <div class="footer__logo">
             <a class="logo" href="#">
@@ -101,9 +197,9 @@
             <li><a class="footer__link" href="#">CGU</a></li>
         </ul>
     </section>
-    <div class="footer__copyright">
+    <section class="footer__copyright">
         <p>Tous droits réservés © 2025 Intern Rift | Créé par le <a href="#">Groupe n°2</a>.</p>
-    </div>
+    </section>
 </footer>
 
 <script src="/assets/js/script.js"></script>

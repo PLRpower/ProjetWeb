@@ -1,89 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 
 body {
+    font-family: "Plus Jakarta Sans", serif;
     margin: 0;
     color: var(--neutral-600);
-    font-family: "Plus Jakarta Sans", serif;
     font-size: 18px;
     line-height: 1.6em;
-}
-
-h1 {
-    margin-bottom: 24px;
-    font-size: 58px;
-    line-height: 1.2em;
-}
-
-h2 {
-    margin-bottom: 16px;
-    font-size: 42px;
-    line-height: 1.4em;
-}
-
-h3 {
-    margin-bottom: 12px;
-    font-size: 26px;
-    line-height: 1.4em;
-}
-
-h4 {
-    margin-bottom: 16px;
-    font-size: 23px;
-    line-height: 1.4em;
-}
-
-h5 {
-    margin-bottom: 16px;
-    font-size: 18px;
-    line-height: 1.3em;
-}
-
-h6 {
-    margin-bottom: 10px;
-    font-size: 16px;
-    line-height: 1.4em;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    color: var(--neutral-800);
-    margin-top: 0;
-    font-weight: 700;
-}
-
-@media screen and (max-width: 30rem) {
-    h1 {
-        font-size: 36px;
-        line-height: 1.2em;
-    }
-}
-
-@media screen and (max-width: 48rem) {
-    h1 {
-        margin-bottom: 16px;
-        font-size: 40px;
-        line-height: 1.3em;
-    }
-}
-
-@media screen and (max-width: 64rem) {
-    h1 {
-        margin-bottom: 20px;
-        font-size: 50px;
-    }
-}
-
-.paragraph__small {
-    font-size: 14px;
-    line-height: 1.71429em;
-}
-
-.paragraph__large {
-    font-size: 24px;
-    line-height: 1.58333em;
-}
-
-p {
-    margin: 0;
 }
 
 a {
@@ -114,10 +36,18 @@ main {
     transition: transform 0.2s ease-in-out;
 }
 
-/* Problème avec la police dans les inputs ?!? */
-
 input {
-    font-family: "Plus Jakarta Sans", serif;
+    border: none;
+    border-radius: 16px;
+    width: -webkit-fill-available;
+    padding: 26px 24px;
+    font-family: inherit;
+    outline: none;
+}
+
+hr {
+    border: 1px solid var(--neutral-300);
+    margin: 50px 0;
 }
 
 /* Icones Google */
@@ -135,8 +65,8 @@ input {
     --secondary-2: #efefff;
     --neutral-100: white;
     --neutral-200: #fbfaf7;
-    --neutral-300: #f1eee6;
-    --neutral-400: #dad5c3;
+    --neutral-300: #e6e1d5;
+    --neutral-400: #d1cbb6;
     --neutral-500: #bfae69;
     --neutral-600: #746734;
     --neutral-700: #64572c;
