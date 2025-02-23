@@ -1,14 +1,16 @@
 /* Buttons */
 
 .button__primary {
+    border: none;
     background-color: var(--primary-1);
     color: var(--neutral-100);
     border-radius: 12px;
     padding: 26px 38px;
     font-weight: 700;
+    font-size: 18px;
     line-height: 20px;
     text-decoration: none;
-    transition: color .35s, transform .3s, box-shadow .3s, background-color .3s;
+    transition: all .3s ease-in-out;
     display: inline-block;
 }
 
@@ -19,16 +21,16 @@
 }
 
 .button__secondary {
+    border: 1px solid var(--neutral-300);
     background-color: var(--neutral-100);
     color: var(--neutral-800);
-    text-align: center;
-    transform-style: preserve-3d;
     border-radius: 12px;
     padding: 26px 38px;
     font-size: 18px;
     line-height: 20px;
     text-decoration: none;
     transition: transform .35s, box-shadow .35s, color .35s, border-color .35s;
+    display: inline-block;
     box-shadow: 0 4px 10px #14142b0a;
 }
 
@@ -44,6 +46,7 @@
     background-color: var(--secondary-1);
     color: var(--neutral-100);
     transform: scale(.95);
+    cursor: pointer;
 }
 
 .button__secondary:hover {
@@ -51,4 +54,19 @@
     color: var(--primary-1);
     transform: scale(.95);
     box-shadow: 0 4px 20px #14142b0a;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 48rem) {
+    .button__primary, .button__secondary {
+        border-radius: 8px;
+        padding: 20px 28px;
+    }
+}
+
+@media screen and (min-width: 48rem) {
+    .button__primary.button--small.compact {
+        padding: 10px 24px;
+        border-radius: 50px
+    }
 }

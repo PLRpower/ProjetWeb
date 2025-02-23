@@ -1,4 +1,4 @@
-footer {
+.footer {
     background-color: var(--neutral-200);
     border-top: 2px solid var(--neutral-300);
 }
@@ -48,6 +48,7 @@ footer {
 }
 
 .footer__link {
+    width: fit-content;
     color: var(--neutral-800);
     text-decoration: none;
     display: block;
