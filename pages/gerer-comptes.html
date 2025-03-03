@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Intern Rift - La faille qui vous mène aux meilleurs stages.</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet"/>
+
+    <link href="/assets/css/styles.css" rel="stylesheet">
+    <link href="/assets/css/typography.css" rel="stylesheet">
+    <link href="/assets/css/buttons.css" rel="stylesheet">
+    <link href="/assets/css/offers.css" rel="stylesheet">
+    <link href="/assets/css/header.css" rel="stylesheet">
+    <link href="/assets/css/footer.css" rel="stylesheet">
+    <link href="/assets/css/admin.css" rel="stylesheet">
+</head>
+
+<body>
+<header class="header">
+    <section class="header__container">
+        <div class="header__menu">
+            <a class="logo" href="#">
+                <img alt="Logo | Intern Rift" height="135" src="/assets/images/logo.png" width="617">
+            </a>
+            <button class="button__primary header__hamburger" id="headerHamburger">
+                <span class="material-symbols-rounded" id="headerIcon">menu</span>
+            </button>
+        </div>
+        <div class="header__links" id="headerLinks">
+            <ul class="header__links__left">
+                <li><a class="header__link" href="./index.html">Accueil</a></li>
+                <li><a class="header__link" href="#">Offres</a></li>
+                <li><a class="header__link" href="#">Avis</a></li>
+            </ul>
+            <div class="header__links__right">
+                <form action="" class="header__search__form">
+                    <label>
+                        <input class="header__search" placeholder="Rechercher un stage, entreprise..." type="search">
+                    </label>
+                    <button class="header__search__submit" type="submit">
+                        <span class="material-symbols-rounded">search</span>
+                    </button>
+                </form>
+                <a class="button__primary button--small" href="#" id="headerLogin">Se connecter
+                    <span class="material-symbols-rounded button__icon">arrow_forward</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    <progress id="scrollProgress" max="100" value="0"></progress>
+</header>
+
+<main>
+    <section class="admin__container">
+        <h2>Gérer les comptes</h2>
+        <p>Gérez tout les comptes des utilisateurs de la plateforme.</p>
+        <div class="table__container">
+            <table>
+                <thead>
+                <tr>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Statut</th>
+                    <th>Filière</th>
+                    <th>Année</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Martin</td>
+                    <td>MATIN</td>
+                    <td>martin.matin@viacesi.fr</td>
+                    <td>Etudiant(e)</td>
+                    <td>Informatique</td>
+                    <td>3ème année</td>
+                    <td>
+                        <a class="admin__modify" href="#">
+                            Modifier
+                            <span class="material-symbols-rounded">edit</span>
+                        </a>
+                        <a class="admin__delete" href="#">
+                            Supprimer
+                            <span class="material-symbols-rounded">delete_forever</span>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Nathalie</td>
+                    <td>PORTMAN</td>
+                    <td>nathalie.portman@viacesi.fr</td>
+                    <td>Alternant(e)</td>
+                    <td>BTP</td>
+                    <td>2ème année</td>
+                    <td>
+                        <a class="admin__modify" href="#">
+                            Modifier
+                            <span class="material-symbols-rounded">edit</span>
+                        </a>
+                        <a class="admin__delete" href="#">
+                            Supprimer
+                            <span class="material-symbols-rounded">delete_forever</span>
+                        </a>
+                    </td>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <section class="footer__container">
+        <div class="footer__logo">
+            <a class="logo" href="#">
+                <img alt="Logo | Intern Rift" height="135" src="/assets/images/logo.png" width="617">
+            </a>
+            <p>La faille qui vous mène aux meilleurs stages.</p>
+        </div>
+        <ul class="footer__links">
+            <li><h5>Pages principales</h5></li>
+            <li><a class="footer__link" href="#">Accueil</a></li>
+            <li><a class="footer__link" href="#">Offres</a></li>
+            <li><a class="footer__link" href="#">Avis des entreprises</a></li>
+            <li><a class="footer__link" href="#">Recherche</a></li>
+            <li><a class="footer__link" href="#">Connexion</a></li>
+            <li><a class="footer__link" href="#">Notre groupe</a></li>
+        </ul>
+        <ul class="footer__links">
+            <li><h5>Pages utilitaires</h5></li>
+            <li><a class="footer__link" href="#">Mentions légales</a></li>
+            <li><a class="footer__link" href="#">Politique de confidentialité</a></li>
+            <li><a class="footer__link" href="#">CGU</a></li>
+        </ul>
+    </section>
+    <section class="footer__copyright">
+        <p>Tous droits réservés © 2025 Intern Rift | Créé par le <a href="#">Groupe n°2</a>.</p>
+    </section>
+</footer>
+
+<script src="/assets/js/script.js"></script>
+</body>
+</html>

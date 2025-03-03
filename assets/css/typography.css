@@ -28,6 +28,10 @@ h6 {
     line-height: 1.4em;
 }
 
+.text__center {
+    text-align: center;
+}
+
 h1, h2, h3, h4, h5, h6 {
     color: var(--neutral-800);
     margin-top: 0;

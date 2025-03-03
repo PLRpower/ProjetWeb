@@ -56,7 +56,7 @@
 }
 
 .header__link:hover {
-    color: var(--primary-1);
+    color: var(--primary);
 }
 
 
@@ -99,7 +99,7 @@
 }
 
 .header__search__submit:hover {
-    background-color: var(--primary-1);
+    background-color: var(--primary);
 }
 
 .header__search__submit span {
@@ -129,12 +129,12 @@ progress::-webkit-progress-bar {
 }
 
 progress::-webkit-progress-value {
-    background: var(--primary-1);
+    background: var(--primary);
     border-radius: 8px;
 }
 
 progress::-moz-progress-bar {
-    background: var(--primary-1);
+    background: var(--primary);
     border-radius: 8px;
 }
 

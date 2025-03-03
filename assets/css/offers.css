@@ -11,10 +11,10 @@
 .offers__header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 40px;
 }
 
 .offers__cards {
+    margin-top: 40px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 50px;
@@ -25,7 +25,7 @@
     text-decoration: none;
     padding: 70px 40px;
     border-radius: 24px;
-    box-shadow: 0 4px 10px #14142b0a;
+    box-shadow: var(--shadow);
     border: 1px solid var(--neutral-300);
     transition: transform .3s ease-in-out;
 }
@@ -39,7 +39,7 @@
 }
 
 .offers__card:hover .offer__card__title {
-    color: var(--primary-1);
+    color: var(--primary);
 }
 
 .offers__card__tags {
@@ -51,7 +51,7 @@
 
 .offers__card__company {
     font-weight: 600;
-    color: var(--primary-1);
+    color: var(--primary);
 }
 
 .offers__button {
