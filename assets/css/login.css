@@ -1,0 +1,41 @@
+.login__container {
+    margin: auto;
+    padding: 100px 0;
+}
+
+.login__content {
+    border: 1px solid var(--neutral-300);
+    box-shadow: var(--shadow);
+    text-align: center;
+    margin: auto;
+    border-radius: 32px;
+    display: flex;
+    flex-direction: column;
+    max-width: 650px;
+    box-sizing: border-box;
+    padding: 70px 90px;
+}
+
+.login__text {
+    margin-bottom: 32px;
+    text-wrap: balance;
+}
+
+.login__content img {
+    border-radius: 16px;
+    width: 94px;
+    height: 94px;
+    margin: 0 auto 24px;
+}
+
+.login__content label {
+    margin-bottom: 16px;
+}
+
+.login__content p {
+    margin-bottom: 32px;
+}
+
+.login__password {
+    margin-bottom: 24px;
+}

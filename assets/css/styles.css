@@ -9,7 +9,7 @@ body {
 }
 
 a {
-    color: var(--primary-1);
+    color: var(--primary);
     text-decoration: underline;
     transition: color .35s;
     outline: 0;
@@ -33,21 +33,87 @@ main {
     display: block;
     height: auto;
     width: 250px;
-    transition: transform 0.2s ease-in-out;
+    transition: transform .2s ease-in-out;
 }
 
 input {
-    border: none;
+    border: 1px solid var(--neutral-300);
+    color: var(--neutral-800);
     border-radius: 16px;
     width: -webkit-fill-available;
     padding: 26px 24px;
     font-family: inherit;
     outline: none;
+    transition: color .35s, border-color .35s;
+    font-size: 18px;
+}
+
+input:focus {
+    border-color: var(--primary);
+    color: var(--neutral-800);
+}
+
+input:hover {
+    border-color: var(--primary);
+    color: var(--primary);
 }
 
 hr {
     border: 1px solid var(--neutral-300);
     margin: 50px 0;
+}
+
+.pagination {
+    margin-left: auto;
+    max-width: 300px;
+}
+
+.pagination__pages {
+    border-radius: 12px;
+    display: flex;
+    margin-top: 10px;
+    box-shadow: var(--shadow);
+}
+
+.pagination__link {
+    background-color: var(--neutral-200);
+    padding: 10px 7px;
+    align-items: center;
+    text-align: center;
+    width: 30px;
+    color: var(--neutral-600);
+    text-decoration: none;
+    transition: background-color .3s ease-in-out;
+}
+
+.pagination__link.last {
+    border-radius: 0 12px 12px 0;
+}
+
+.pagination__link.first {
+    border-radius: 12px 0 0 12px;
+}
+
+.pagination__link.disabled {
+    pointer-events: none;
+    color: var(--neutral-300);
+}
+
+.pagination__link:hover {
+    background-color: var(--neutral-300);
+}
+
+.pagination__link.active {
+    background-color: var(--primary);
+    color: var(--neutral-100);
+}
+
+.pagination__numbers {
+    display: flex;
+    gap: 5px;
+    margin-top: 20px;
+    justify-content: space-between;
+    align-items: center;
 }
 
 /* Icones Google */
@@ -57,24 +123,39 @@ hr {
     vertical-align: middle !important;
 }
 
+select {
+    box-shadow: var(--shadow);
+    background-color: var(--neutral-200);
+    border: none;
+    border-radius: 12px;
+    padding: 12px 10px;
+}
+
+.text__container {
+    max-width: 848px;
+    margin: auto;
+    padding: 100px 20px;
+    background-color: var(--neutral-100);
+}
+
+.text__container h3 {
+    margin-top: 30px;
+}
 
 /* Variables CSS */
 :root {
-    --primary-1: #e2b043;
-    --secondary-1: #bf912f;
-    --secondary-2: #efefff;
+    --primary: #e2b043;
+    --secondary: #bf912f;
     --neutral-100: white;
-    --neutral-200: #fbfaf7;
+    --neutral-200: #f6f4f0;
     --neutral-300: #e6e1d5;
     --neutral-400: #d1cbb6;
     --neutral-500: #bfae69;
     --neutral-600: #746734;
-    --neutral-700: #64572c;
+    --neutral-700: #544922;
     --neutral-800: #3b3317;
-    --neutral-900: #000000;
-    --general-shadow-02: #0f086a0a;
-    --general-shadow-01: #0f086a08;
-    --general-shadow-03: #0f086a0f;
-    --general-shadow-05: #0f086a1f;
-    --general-shadow-06: #0f086a3d;
+    --neutral-900: black;
+    --shadow: 1px 4px 10px #D1CBB6AA;
+    --danger: #e24343;
+    --danger-dark: #c22c2c;
 }

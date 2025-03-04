@@ -4,10 +4,30 @@
     text-wrap: balance;
     margin: auto;
     padding: 50px 24px;
+    align-items: center;
 }
 
 .hero__image {
     width: 40%;
+}
+
+.notfound__image {
+    width: 60%;
+}
+
+.error__code {
+    font-size: 150px;
+    margin-bottom: 70px;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.error__title {
+    margin-bottom: 20px;
+}
+
+.error__description {
+    margin-bottom: 30px;
 }
 
 .hero__subtitle {
@@ -67,7 +87,7 @@
 }
 
 .cta__container {
-    background-color: var(--primary-1);
+    background-color: var(--primary);
 }
 
 .cta__content {
