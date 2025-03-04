@@ -231,3 +231,54 @@ input:checked + .slider:before {
     font-size: 16px;
     color: #666;
 }
+
+@media screen and (max-width: 64rem)  {
+    .logo {
+        font-size: 18px;
+    }
+
+    .profile-picture {
+        width: 80px;
+        height: 80px;
+    }
+
+    .profile-picture .edit-icon {
+        width: 20px;
+        height: 20px;
+        font-size: 12px;
+    }
+    .form-group {
+        margin-left: 10px;
+        margin-right: 20px;
+        font-size: 14px;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    textarea {
+        font-size: 12px;
+    }
+
+    .toggle-switch {
+        width: 50px;
+        height: 25px;
+    }
+    .toggle-option {
+        margin-left: 15px;
+    }
+
+    .slider:before {
+        height: 18px;
+        width: 18px;
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(25px);
+    }
+
+    .social-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+}
