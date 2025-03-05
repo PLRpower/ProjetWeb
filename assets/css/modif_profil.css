@@ -3,6 +3,17 @@
     font-weight: bold;
 }
 
+.header__search__submit {
+    background-color: var(--neutral-300);
+    color: var(--neutral-100);
+    border-bottom-right-radius: calc(infinity* 1px);
+    border-top-right-radius: calc(infinity* 1px);
+    padding: 10px 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    transition: background-color .3s ease-in-out;
+}
+
 nav ul {
     display: flex;
     list-style: none;

@@ -6,11 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const confirmPasswordInput = document.getElementById('confirm-password');
     const profilePictureContainer = document.querySelector('.profile-picture');
     const profilePicture = document.querySelector('.profile-picture img');
-    const userInfoPicture = document.querySelector('.user-info img');
-    const userInfoName = document.querySelector('.user-info span');
     const form = document.querySelector('.profile');
 
-    let originalName = userInfoName ? userInfoName.textContent : 'Martin';
 
     // Fonction pour vérifier si un champ est vide
     function isEmpty(input) {
@@ -77,16 +74,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     const img = new Image();
                     img.onload = function() {
                         profilePicture.src = event.target.result;
-                        userInfoPicture.src = event.target.result;
 
                         profilePicture.style.width = '100%';
                         profilePicture.style.height = '100%';
                         profilePicture.style.objectFit = 'cover';
                         profilePicture.style.borderRadius = '50%';
 
-                        userInfoPicture.style.width = '35px';
-                        userInfoPicture.style.height = '35px';
-                        userInfoPicture.style.objectFit = 'cover';
+
                     };
                     img.src = event.target.result;
                 };
@@ -203,13 +197,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Si tout est valide, mettre à jour le profil
         if (isValid) {
-            if (nameInput && userInfoName) {
-                userInfoName.textContent = nameInput.value || originalName;
-            }
-
-            if (profilePicture && userInfoPicture) {
-                userInfoPicture.src = profilePicture.src;
-            }
 
             // Afficher un message de succès
             const successMessage = document.createElement('div');
