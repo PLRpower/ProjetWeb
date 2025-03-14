@@ -1,0 +1,75 @@
+{% extends "dashboard.twig" %}
+
+{% block content %}
+
+    <section id="popUpDeleteOverlay">
+        <div class="pop-up_delete-content">
+            <h5>Etes vous sûr de vouloir supprimer cet étudiant.</h5>
+
+
+            <a class="pop-up_delete-confirm" onclick="toggleDelete()">Confirmer</a>
+            <a class="pop-up_delete-exit" onclick="toggleDelete()">Annuler</a>
+        </div>
+    </section>
+
+    <section class="CUDR">
+        <table>
+            <thead>
+            <tr>
+                <td></td>
+                <td>Nom</td>
+                <td>Prénom</td>
+                <td>Email</td>
+                <td>Promotion</td>
+                <td>Etat</td>
+                <td>
+                    <button onclick="toggleEdit()" class="CUDR_add_button">Ajouter un étudiant</button>
+                </td>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <td><img src="/assets/img/martin.webp" alt="student_1" class="picto_table"></td>
+                <td>PHILIP</td>
+                <td>Martin</td>
+                <td>martin.philip@viacesi.fr</td>
+                <td>A2</td>
+
+                <td class="student_status">
+                    <p>Research Ongoing</p>
+                </td>
+
+                <td>
+                    <button onclick="toggleEdit()" class="CUDR_button">
+                        <i class="icon">edit</i>
+                        Modifier
+                    </button>
+
+                    <button onclick="toggleDelete()" class="CUDR_button">
+                        <i class="icon">delete</i>
+                        Supprimer
+                    </button>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    </section>
+
+    <section class="CUDR_bot">
+        <p>1 to 3 out of 37</p>
+
+        <div class="CUDR_pagination">
+            <a href="#">&laquo;</a>
+            <a href="#">1</a>
+            <a class="active" href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">6</a>
+            <a href="#">&raquo;</a>
+        </div>
+    </section>
+
+{% endblock %}
