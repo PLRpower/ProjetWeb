@@ -1,7 +1,8 @@
 <?php
 
+use App\Controllers\HomeController;
+use App\Controllers\UserController;
 use Twig\Environment;
-use Twig\Error\LoaderError;
 use Twig\Loader\FilesystemLoader;
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -19,12 +20,16 @@ $twig = new Environment($loader, [
     'cache' => false,
 ]);
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 $url = trim($_SERVER['REQUEST_URI'], '/');
 
-$template = empty($url) ? 'accueil.twig' : "$url.twig";
+$controller = new UserController($twig);
+$homeController = new HomeController($twig);
 
-try {
-    echo $twig->render($template);
-} catch (LoaderError $e) {
-    echo $twig->render('error.twig');
+if ($url === '') {
+    $controller->welcomePage();
+} else {
+    $homeController->erreur();
 }

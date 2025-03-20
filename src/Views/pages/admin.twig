@@ -29,12 +29,13 @@
             </thead>
 
             <tbody>
+            {% for student in students %}
             <tr>
                 <td><img src="/assets/img/martin.webp" alt="student_1" class="picto_table"></td>
-                <td>PHILIP</td>
-                <td>Martin</td>
-                <td>martin.philip@viacesi.fr</td>
-                <td>A2</td>
+                <td>{{ student.user.last_name }}</td>
+                <td>{{ student.user.first_name }}</td>
+                <td>{{ student.user.email }}</td>
+                <td>{{ student.promotion }}</td>
 
                 <td class="student_status">
                     <p>Research Ongoing</p>
@@ -52,13 +53,13 @@
                     </button>
                 </td>
             </tr>
-
+            {% endfor %}
             </tbody>
         </table>
     </section>
 
     <section class="CUDR_bot">
-        <p>1 to 3 out of 37</p>
+        <p>{{ start }} - {{ end }} sur {{ total }}</p>
 
         <div class="CUDR_pagination">
             <a href="#">&laquo;</a>
