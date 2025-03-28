@@ -15,7 +15,7 @@ function createRandomCompany(): Company
     return Company::create([
         'name' => $name,
         'description' => 'Description de ' . $name,
-        'location' => $location(array_rand($location)),
+        'location' => $location[array_rand($location)],
         'email_contact' => 'contact' . uniqid() . '@' . strtolower($name) . '.com',
         'telephone_contact' => uniqid()
     ]);
