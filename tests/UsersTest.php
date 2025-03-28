@@ -10,8 +10,8 @@ function createRandomUser(): User
     $firstsNames = ['Amira', 'Sylvain', 'Hervé', 'Paul', 'Nicolas', 'Martin', 'Louis', 'Elodie', 'Jules', 'Kylian'];
     $lastNames = ['Thomas', 'Philip', 'Lambert', 'Plüss', 'Schnell', 'Game', 'Masson', 'Simon', 'Demessine', 'Leclerc'];
 
-    $firstName = $firstsNames(array_rand($firstsNames));
-    $lastName = $lastNames(array_rand($lastNames));
+    $firstName = $firstsNames[array_rand($firstsNames)];
+    $lastName = $lastNames[array_rand($lastNames)];
     return User::create([
         'first_name' => $firstName,
         'last_name' => $lastName,

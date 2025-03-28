@@ -16,9 +16,9 @@ function createRandomTeacher(): Teacher
 
     return Teacher::create([
         'id' => $user->id,
-        'department' => $major(array_rand($major)),
-        'specialization' => $specialization(array_rand($specialization)),
-        'office' => $office(array_rand($office)),
+        'department' => $major[array_rand($major)],
+        'specialization' => $specialization[array_rand($specialization)],
+        'office' => $office[array_rand($office)],
         'years_of_experience' => rand(0, 20),
     ]);
 }
