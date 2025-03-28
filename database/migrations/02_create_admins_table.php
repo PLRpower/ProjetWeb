@@ -8,4 +8,4 @@ Capsule::schema()->create('admins', function ($table) {
     $table->foreignId('id')->primary()->constrained('users')->onDelete('cascade');
 });
 
-echo "Table 'admins' créé !\n";
+echo "Table 'admins' créée !\n";

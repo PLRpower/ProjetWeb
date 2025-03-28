@@ -14,21 +14,22 @@ class User extends Model
         'email',
         'password'
     ];
+    protected $hidden = ['password'];
 
     public $timestamps = true;
 
     public function admin(): HasOne
     {
-        return $this->hasOne(Admin::class);
+        return $this->hasOne(Admin::class, 'id');
     }
 
     public function student(): HasOne
     {
-        return $this->hasOne(Student::class);
+        return $this->hasOne(Student::class, 'id');
     }
 
     public function teacher(): HasOne
     {
-        return $this->hasOne(Teacher::class);
+        return $this->hasOne(Teacher::class, 'id');
     }
 }

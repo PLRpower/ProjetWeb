@@ -16,17 +16,11 @@ class Student extends Model
         'major',
         'linkedin_url',
         'internship_status',
-        'teacher_id',
     ];
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
-    }
-
-    public function teacher(): BelongsTo
-    {
-        return $this->belongsTo(Teacher::class);
+        return $this->belongsTo(User::class, 'id');
     }
 
     public function applications(): HasMany

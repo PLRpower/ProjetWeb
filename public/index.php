@@ -1,7 +1,6 @@
 <?php
 
 use App\Controllers\HomeController;
-use App\Controllers\UserController;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
@@ -25,11 +24,9 @@ ini_set('display_errors', 1);
 
 $url = trim($_SERVER['REQUEST_URI'], '/');
 
-$controller = new UserController($twig);
 $homeController = new HomeController($twig);
-
 if ($url === '') {
-    $controller->welcomePage();
+    $homeController->accueil();
 } else {
     $homeController->erreur();
 }

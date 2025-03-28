@@ -10,7 +10,6 @@ Capsule::schema()->create('students', function ($table) {
     $table->string('major');
     $table->string('linkedin_url')->nullable();
     $table->enum('internship_status', ['recherche', 'en cours', 'terminé'])->default('recherche');
-    $table->foreignId('teacher_id')->nullable()->constrained('teachers')->onDelete('set null');
 });
 
-echo "Table 'students' créé !\n";
+echo "Table 'students' créée !\n";

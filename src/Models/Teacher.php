@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Teacher extends Model
 {
@@ -20,11 +19,14 @@ class Teacher extends Model
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'id');
     }
 
-    public function students(): HasMany
+    protected static function boot(): void
     {
-        return $this->hasMany(Student::class);
+        parent::boot();
+        static::deleting(function ($user) {
+            $user->teacher()->delete();
+        });
     }
 }

@@ -14,8 +14,8 @@ class HomeController extends Controller
 
     public function accueil(): void
     {
-        Offer::limit(4);
-        echo $this->twig->render('accueil.twig');
+        $offers = Offer::latest()->limit(4)->get();
+        echo $this->twig->render('accueil.twig', ['offers' => $offers]);
     }
 
     public function erreur(): void

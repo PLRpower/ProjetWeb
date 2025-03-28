@@ -54,13 +54,14 @@
             </a>
         </div>
         <article class="offers__cards">
+            {% for offer in offers %}
             <a class="offers__card" href="#">
-                <p class="offers__card__company">Siemens</p>
-                <h3 class="offers__card__title">Stage en systèmes embarqués</h3>
+                <p class="offers__card__company">{{ offer.company.name }}</p>
+                <h3 class="offers__card__title">{{ offer.title }}</h3>
                 <div class="offers__card__tags">
                     <p>
                         <i class="icon">location_on</i>
-                        Strasbourg, France
+                        {{ offer.city }}, {{ offer.country }}
                     </p>
                     <p>
                         <i class="icon">schedule</i>
@@ -71,60 +72,7 @@
                     <i class="icon button__icon">arrow_forward</i>
                 </button>
             </a>
-
-            <a class="offers__card" href="#">
-                <p class="offers__card__company">Cisco</p>
-                <h3 class="offers__card__title">Stage en Réseaux/Systèmes</h3>
-                <div class="offers__card__tags">
-                    <p>
-                        <i class="icon">location_on</i>
-                        Paris, France
-                    </p>
-                    <p>
-                        <i class="icon">schedule</i>
-                        Stage
-                    </p>
-                </div>
-                <button class="button__primary">Postuler
-                    <i class="icon button__icon">arrow_forward</i>
-                </button>
-            </a>
-
-            <a class="offers__card" href="#">
-                <p class="offers__card__company">GlobalExam</p>
-                <h3 class="offers__card__title">Stage en développement web</h3>
-                <div class="offers__card__tags">
-                    <p>
-                        <i class="icon">location_on</i>
-                        Londres, Angleterre
-                    </p>
-                    <p>
-                        <i class="icon">schedule</i>
-                        Stage
-                    </p>
-                </div>
-                <button class="button__primary">Postuler
-                    <i class="icon button__icon">arrow_forward</i>
-                </button>
-            </a>
-
-            <a class="offers__card" href="/details-offre">
-                <p class="offers__card__company">Siemens</p>
-                <h3 class="offers__card__title">Stage en POO</h3>
-                <div class="offers__card__tags">
-                    <p>
-                        <i class="icon">location_on</i>
-                        Strasbourg, France
-                    </p>
-                    <p>
-                        <i class="icon">schedule</i>
-                        CDI
-                    </p>
-                </div>
-                <button class="button__primary">Postuler
-                    <i class="icon button__icon">arrow_forward</i>
-                </button>
-            </a>
+            {% endfor %}
 
         </article>
     </section>

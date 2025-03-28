@@ -12,4 +12,4 @@ Capsule::schema()->create('teachers', function ($table) {
     $table->integer('years_of_experience')->default(0);
 });
 
-echo "Table 'teachers' créé !\n";
+echo "Table 'teachers' créée !\n";

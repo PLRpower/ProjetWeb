@@ -13,4 +13,4 @@ Capsule::schema()->create('users', function ($table) {
     $table->timestamps();
 });
 
-echo "Table 'users' créé !\n";
+echo "Table 'users' créée !\n";

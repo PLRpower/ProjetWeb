@@ -10,7 +10,7 @@ Capsule::schema()->create('offers', function ($table) {
     $table->text('description');
     $table->date('start_date');
     $table->string('duration');
-    $table->decimal('remuneration', 10, 2);
+    $table->decimal('remuneration', 10, 2)->nullable();
     $table->string('city');
     $table->string('country');
     $table->string('domain');
