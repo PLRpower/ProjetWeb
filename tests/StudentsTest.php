@@ -16,9 +16,9 @@ function createRandomStudent(): Student
     return Student::create([
         'id' => $user->id,
         'promotion' => 2020 + rand(0, 3),
-        'major' => $major(array_rand($major)),
+        'major' => $major[array_rand($major)],
         'linkedin_url' => 'https://www.linkedin.com/in/' . uniqid(),
-        'internship_status' => $status(array_rand($status)),
+        'internship_status' => $status[array_rand($status)],
     ]);
 }
 
