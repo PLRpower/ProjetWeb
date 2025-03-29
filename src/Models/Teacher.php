@@ -9,6 +9,7 @@ class Teacher extends Model
 {
     public $timestamps = false;
     protected $table = 'teachers';
+    public $incrementing = false;
     protected $fillable = [
         'id',
         'department',

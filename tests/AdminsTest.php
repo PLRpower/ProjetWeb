@@ -1,10 +1,11 @@
 <?php
 
 use App\Models\Admin;
+use PHPUnit\Framework\Attributes\DependsExternal;
 use PHPUnit\Framework\TestCase;
 
-require_once __DIR__ . '/../database/database.php';
 require_once __DIR__ . '/UsersTest.php';
+require_once __DIR__ . '/CompaniesTest.php';
 
 function createRandomAdmin(): Admin
 {
@@ -23,6 +24,7 @@ function createRandomAdmin(): Admin
     ]);
 }
 
+
 class AdminsTest extends TestCase
 {
     public static function setUpBeforeClass(): void
@@ -32,6 +34,7 @@ class AdminsTest extends TestCase
         }
     }
 
+    #[DependsExternal(CompaniesTest::class, 'testGetCompany')]
     public function testGetTeacher()
     {
         $user = Admin::first();

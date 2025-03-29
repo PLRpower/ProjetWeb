@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Admin extends Model
 {
+    public $incrementing = false;
     public $timestamps = false;
     protected $table = 'admins';
     protected $fillable = ['id'];

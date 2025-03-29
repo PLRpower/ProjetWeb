@@ -3,12 +3,12 @@
 use App\Models\Offer;
 use PHPUnit\Framework\TestCase;
 
-require_once __DIR__ . '/../database/database.php';
 require_once __DIR__ . '/CompaniesTest.php';
 
 function createRandomOffer(): Offer
 {
     $title = ['Ingénieur', 'Développeur', 'Designer', 'Manager', 'Commercial', 'RH', 'Comptable', 'Juriste'];
+
     $city = [
         'Paris',
         'Lyon',
@@ -21,6 +21,7 @@ function createRandomOffer(): Offer
         'Bordeaux',
         'Lille'
     ];
+
     $country = [
         'France',
         'Allemagne',
@@ -33,6 +34,7 @@ function createRandomOffer(): Offer
         'Danemark',
         'Suède'
     ];
+
     $domain = [
         'Informatique',
         'Finance',
@@ -45,6 +47,7 @@ function createRandomOffer(): Offer
         'Achats',
         'Commercial'
     ];
+
     $requiredLevel = ['Bac', 'Bac +2', 'Bac +3', 'Bac +4', 'Bac +5'];
 
     $company = createRandomCompany();
@@ -52,7 +55,7 @@ function createRandomOffer(): Offer
     return Offer::create([
         'title' => $title[array_rand($title)],
         'description' => "Description de l'offre",
-        'start_date' => date('Y-m-d', rand('2020-01-01', 1640995200)),
+        'start_date' => date('Y-m-d', rand(1600995200, 1640995200)),
         'duration' => rand(1, 12),
         'remuneration' => rand(400, 3000),
         'city' => $city[array_rand($city)],

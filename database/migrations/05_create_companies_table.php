@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__ . '/../database.php';
-
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 Capsule::schema()->create('companies', function ($table) {
@@ -13,5 +11,3 @@ Capsule::schema()->create('companies', function ($table) {
     $table->string('telephone_contact')->unique();
     $table->timestamps();
 });
-
-echo "Table 'companies' créée !\n";

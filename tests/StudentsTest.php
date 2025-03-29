@@ -3,7 +3,6 @@
 use App\Models\Student;
 use PHPUnit\Framework\TestCase;
 
-require_once __DIR__ . '/../database/database.php';
 require_once __DIR__ . '/UsersTest.php';
 
 function createRandomStudent(): Student

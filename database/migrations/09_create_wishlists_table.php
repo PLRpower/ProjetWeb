@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__ . '/../database.php';
-
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 Capsule::schema()->create('wishlists', function ($table) {
@@ -11,5 +9,3 @@ Capsule::schema()->create('wishlists', function ($table) {
 
     $table->primary(['student_id', 'offer_id']);
 });
-
-echo "Table 'wishlists' créée !\n";

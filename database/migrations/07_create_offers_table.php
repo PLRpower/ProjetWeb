@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__ . '/../database.php';
-
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 Capsule::schema()->create('offers', function ($table) {
@@ -18,5 +16,3 @@ Capsule::schema()->create('offers', function ($table) {
     $table->foreignId('company_id')->constrained('companies')->onDelete('cascade');
     $table->timestamps();
 });
-
-echo "Table 'offers' créée !\n";

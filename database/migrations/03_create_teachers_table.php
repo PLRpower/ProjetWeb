@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__ . '/../database.php';
-
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 Capsule::schema()->create('teachers', function ($table) {
@@ -11,5 +9,3 @@ Capsule::schema()->create('teachers', function ($table) {
     $table->string('office')->nullable();
     $table->integer('years_of_experience')->default(0);
 });
-
-echo "Table 'teachers' créée !\n";

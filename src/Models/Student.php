@@ -10,6 +10,8 @@ class Student extends Model
 {
     public $timestamps = false;
     protected $table = 'students';
+    public $incrementing = false;
+
     protected $fillable = [
         'id',
         'promotion',

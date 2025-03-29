@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__ . '/../database.php';
-
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 Capsule::schema()->create('students', function ($table) {
@@ -11,5 +9,3 @@ Capsule::schema()->create('students', function ($table) {
     $table->string('linkedin_url')->nullable();
     $table->enum('internship_status', ['recherche', 'en cours', 'terminé'])->default('recherche');
 });
-
-echo "Table 'students' créée !\n";

@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__ . '/../database.php';
-
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 Capsule::schema()->create('users', function ($table) {
@@ -12,5 +10,3 @@ Capsule::schema()->create('users', function ($table) {
     $table->string('password');
     $table->timestamps();
 });
-
-echo "Table 'users' créée !\n";
