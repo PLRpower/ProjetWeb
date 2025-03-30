@@ -6,7 +6,7 @@ use Twig\Loader\FilesystemLoader;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../database/database.php';
-
+require_once __DIR__ . '/../src/Controllers/Pagination.php';
 
 $loader = new FilesystemLoader([
     __DIR__ . '/../src/Views/pages',
@@ -22,11 +22,21 @@ $twig = new Environment($loader, [
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-$url = trim($_SERVER['REQUEST_URI'], '/');
+$url = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 
 $homeController = new HomeController($twig);
-if ($url === '') {
-    $homeController->accueil();
-} else {
-    $homeController->erreur();
+
+switch ($url) {
+    case '':
+        $homeController->accueil();
+        break;
+    case 'dernieres-offres':
+        $homeController->dernieresOffres();
+        break;
+    case 'mentions-legales':
+        $homeController->mentionsLegales();
+        break;
+    default:
+        $homeController->erreur();
+        break;
 }

@@ -67,16 +67,13 @@ hr {
     margin: 50px 0;
 }
 
-.pagination {
-    margin-left: auto;
-    max-width: 300px;
-}
-
 .pagination__pages {
     border-radius: 12px;
     display: flex;
     margin-top: 10px;
     box-shadow: var(--shadow);
+    width: fit-content;
+    margin-left: auto;
 }
 
 .pagination__link {
@@ -118,6 +115,8 @@ hr {
     margin-top: 20px;
     justify-content: space-between;
     align-items: center;
+    margin-left: auto;
+    max-width: 300px;
 }
 
 select {

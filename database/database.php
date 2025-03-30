@@ -10,7 +10,7 @@ $capsule->addConnection([
     'driver' => 'mysql',
     'host' => '127.0.0.1',
     'database' => 'intern_rift',
-    'username' => 'admin',
+    'username' => 'admin_intern_rift',
     'password' => 'IJ*23ioo8932JN',
     'charset' => 'utf8',
     'collation' => 'utf8_unicode_ci',

@@ -13,26 +13,41 @@ Intern Rift la faille qui vous mènera à la réussite.
     - php-xml (pour Twig)
     - php-mysql (pour PDO)
     - php-cli, php-curl, unzip, curl (pour Composer)
+    - php-mbstring (pour PHPUnit)
 
 ## Installation
 
-1. Clonez ce projet :
+### 1. Clonez ce projet :
 
 ```bash
 git clone https://github.com/PLRPower/ProjetWeb.git
 ```
 
-2. Installez les dépendances PHP via Composer :
+### 2. Installez les dépendances PHP via Composer :
 
 ```bash
 composer install
 ```
 
-3. Configurez la base de données dans database/database.php en ajoutant vos informations de connexion.
+### 3. Créez la base de donnée
 
-4. Exécutez les migrations pour créer les tables nécessaires :
+Exécutez la commande suivante pour ouvrir MySQL en mode administrateur :
+```bash
+sudo mysql
+```
 
-```bashcom
+Ensuite, exécutez le script SQL ci-dessous pour créer l'utilisateur et la base de données pour le projet :
+```sql
+CREATE USER 'admin_intern_rift'@'localhost' IDENTIFIED BY 'IJ*23ioo8932JN';
+CREATE DATABASE intern_rift;
+GRANT ALL PRIVILEGES ON intern_rift.* TO 'admin_intern_rift'@'localhost';
+FLUSH PRIVILEGES;
+```
+> Note : si vous modifiez les informations du script SQL, n'oubliez pas de mettre à jour le fichier /database/database.php
+
+### 4. Exécutez les migrations pour créer les tables nécessaires :
+
+```bash
 composer migrate
 ```
 
