@@ -1,0 +1,26 @@
+<div class="pagination">
+    <div class="pagination__pages">
+        <a class="pagination__link first {% if page == 1 %}disabled{% endif %}"
+           href="?page={{ page - 1 }}&per_page={{ perPage }}">
+            <i class="icon">chevron_left</i>
+        </a>
+        {% for i in 1..totalPages %}
+            <a class="pagination__link {% if i == page %}active{% endif %}"
+               href="?page={{ i }}&per_page={{ perPage }}">{{ i }}</a>
+        {% endfor %}
+        <a class="pagination__link last {% if page == totalPages %}disabled{% endif %}"
+           href="?page={{ page + 1 }}&per_page={{ perPage }}">
+            <i class="icon">chevron_right</i>
+        </a>
+    </div>
+    <form method="GET" class="pagination__numbers">
+        <label for="per_page">Résultats {{ start }} - {{ end }} sur {{ totalItems }}</label>
+        <select name="per_page" id="per_page" onchange="this.form.submit()" class="pagination__select">
+            <option value="6" {% if perPage == 6 %}selected{% endif %}>6</option>
+            <option value="10" {% if perPage == 10 %}selected{% endif %}>10</option>
+            <option value="20" {% if perPage == 20 %}selected{% endif %}>20</option>
+            <option value="50" {% if perPage == 50 %}selected{% endif %}>50</option>
+        </select>
+        <input type="hidden" name="page" value="1">
+    </form>
+</div>

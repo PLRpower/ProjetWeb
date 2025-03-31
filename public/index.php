@@ -1,6 +1,7 @@
 <?php
 
 use App\Controllers\HomeController;
+use App\Controllers\OffersController;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
@@ -26,13 +27,14 @@ ini_set('display_errors', 1);
 $url = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 
 $homeController = new HomeController($twig);
+$offersController = new OffersController($twig);
 
 switch ($url) {
     case '':
         $homeController->accueil();
         break;
     case 'dernieres-offres':
-        $homeController->dernieresOffres();
+        $offersController->dernieresOffres();
         break;
     case 'mentions-legales':
         $homeController->mentionsLegales();
@@ -47,7 +49,7 @@ switch ($url) {
         $homeController->connexion();
         break;
     case 'details-offre':
-        $homeController->detailsOffre();
+        $offersController->detailsOffre();
         break;
     case 'modif-profil':
         $homeController->modifProfil();

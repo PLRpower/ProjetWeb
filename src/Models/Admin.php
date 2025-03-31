@@ -16,4 +16,9 @@ class Admin extends Model
     {
         return $this->belongsTo(User::class, 'id');
     }
+
+    public function selectQuery($admin): string
+    {
+        return 'SELECT * FROM $admin';
+    }
 }

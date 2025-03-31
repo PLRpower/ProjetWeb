@@ -4,9 +4,8 @@ namespace App\Controllers;
 
 use App\Models\Offer;
 
-class OfferController extends Controller
+class OffersController extends Controller
 {
-
     public function __construct($twig)
     {
         $this->twig = $twig;
