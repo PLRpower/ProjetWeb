@@ -4,7 +4,7 @@
 
     <section class="offer__container">
         <div class="offer__content">
-            <h2>Stage en systèmes embarqués</h2>
+            <h2>{{ offer.title }}</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci at commodi cumque deserunt et id
                 omnis optio, quibusdam sint velit.</p>
 
@@ -13,11 +13,11 @@
                 <i class="icon button__icon">star</i>
             </a>
             <div class="offer__details">
-                <p><strong>Posté le : </strong>20 février 2025</p>
+                <p><strong>Posté le : </strong>{{ offer.created_at|date("d/m/Y") }}</p>
                 <div class="offers__card__tags">
                     <p>
                         <i class="icon">location_on</i>
-                        Strasbourg, France
+                        {{ offer.city }}, {{ offer.country }}
                     </p>
                     <p>
                         <i class="icon">schedule</i>

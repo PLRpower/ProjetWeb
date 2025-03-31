@@ -18,11 +18,29 @@ class HomeController extends Controller
         echo $this->twig->render('accueil.twig', ['offers' => $offers]);
     }
 
-    public function dernieresOffres(): void
+    public function admin(): void
     {
+        echo $this->twig->render('admin.twig');
+    }
 
-        $pagination = paginate(new Offer());
-        echo $this->twig->render('dernieres-offres.twig', $pagination);
+    public function adminAccueil(): void
+    {
+        echo $this->twig->render('admin-accueil.twig');
+    }
+
+    public function connexion(): void
+    {
+        echo $this->twig->render('connexion.twig');
+    }
+
+    public function modifProfil(): void
+    {
+        echo $this->twig->render('modif-profil.twig');
+    }
+
+    public function wishlist(): void
+    {
+        echo $this->twig->render('wishlist.twig');
     }
 
     public function mentionsLegales(): void

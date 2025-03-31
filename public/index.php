@@ -18,6 +18,7 @@ $twig = new Environment($loader, [
     'debug' => true,
     'cache' => false,
 ]);
+setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -35,6 +36,24 @@ switch ($url) {
         break;
     case 'mentions-legales':
         $homeController->mentionsLegales();
+        break;
+    case 'admin':
+        $homeController->admin();
+        break;
+    case 'admin-accueil':
+        $homeController->adminAccueil();
+        break;
+    case 'connexion':
+        $homeController->connexion();
+        break;
+    case 'details-offre':
+        $homeController->detailsOffre();
+        break;
+    case 'modif-profil':
+        $homeController->modifProfil();
+        break;
+    case 'wishlist':
+        $homeController->wishlist();
         break;
     default:
         $homeController->erreur();
