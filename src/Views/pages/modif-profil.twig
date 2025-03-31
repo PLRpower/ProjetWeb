@@ -1,0 +1,83 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+    <div class="profile">
+        <div class="profile-picture">
+            <img src="https://via.placeholder.com/35" alt="Profile">
+            <div class="edit-icon">✎</div>
+        </div>
+
+        <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email">
+        </div>
+
+        <div class="form-group">
+            <label for="location">Your Location</label>
+            <input type="text" id="location">
+        </div>
+
+        <div class="form-row">
+            <div class="form-col">
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password">
+                </div>
+            </div>
+            <div class="form-col">
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="about">About Me</label>
+            <textarea id="about">Ouais c’est un peu chiant les gars, en gros Luden c’est un mythique pas si mythique qui donne de la pene magique et donc en gros ça donne 6 de pene magique flat donc a deux items complet donc il a 10 de pene flat donc en gros il monte a 16, il a les bottes ça fait 18 donc 16 plus 18 ça fait 34 si je dis pas de connerie, 34 plus euuh il avait shadowflame donc il a 44 et il a 44 et après du coup le void staff faut faire 44 divisé par 0.6 en gros il fait des dégats pur a… il fait</textarea>
+        </div>
+
+        <div class="toggle-container">
+            <div class="toggle-option">
+                <div class="toggle-title">Email Notifications</div>
+                <div class="toggle-description">Select if you want us to send you notifications including replies to
+                    your comments, comment moderation requests, and any updates made to your comments and free hextech
+                    chest.
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="toggle-option">
+                <div class="toggle-title">System Notifications</div>
+                <div class="toggle-description">Send notifications when users like, dislike, vote up, vote down my
+                    comments and get +25lp.
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="social-networks">
+            <div class="social-networks-title">Connect Social Networks</div>
+            <div class="social-icons">
+                <div class="social-icon">f</div>
+                <div class="social-icon">t</div>
+                <div class="social-icon">in</div>
+                <div class="social-icon">Y</div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

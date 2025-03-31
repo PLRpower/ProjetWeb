@@ -1,0 +1,32 @@
+# Exclure le dossier vendor (les dépendances de Composer)
+vendor/
+
+# Exclure les fichiers de Composer qui ne doivent pas être suivis
+composer.lock
+
+# Exclure les fichiers de cache et logs
+cache/
+logs/
+*.log
+
+# Exclure les fichiers d'environnement (ex: variables sensibles)
+.env
+.env.local
+.env.*
+
+# Exclure les fichiers et dossiers de l'IDE (PhpStorm, VSCode, etc.)
+.idea/
+.vscode/
+*.swp
+
+# Exclure les fichiers système
+.DS_Store
+Thumbs.db
+
+# Exclure les fichiers temporaires PHP
+*.bak
+*.tmp
+
+# Exclure les sessions et fichiers temporaires s'ils sont stockés dans un dossier spécifique
+sessions/
+tmp/

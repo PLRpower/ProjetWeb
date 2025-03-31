@@ -1,0 +1,35 @@
+<header class="header">
+    <section class="header__container">
+        <div class="header__menu">
+            <a class="logo" href="/">
+                <img alt="Logo | Intern Rift" height="135" src="/assets/img/logo.webp" width="617">
+            </a>
+            <button class="button__primary" id="headerHamburger">
+                <i class="icon" id="headerIcon">menu</i>
+            </button>
+        </div>
+        <div id="headerLinks">
+            <ul class="header__links__left">
+                <li><a class="header__link" href="/">Accueil</a></li>
+                <li><a class="header__link" href="/dernieres-offres">Offres</a></li>
+                <li><a class="header__link" href="/avis">Avis</a></li>
+            </ul>
+            <div class="header__links__right">
+                <form action="" class="header__search__form">
+                    <label>
+                        <input class="header__search" placeholder="Rechercher un stage, entreprise..." type="search">
+                    </label>
+                    <button class="header__search__submit" type="submit">
+                        <i class="icon">search</i>
+                    </button>
+                </form>
+                <a class="button__primary button--small" href="/connexion" id="headerLogin">Se connecter
+                    <i class="icon button__icon">arrow_forward</i>
+                </a>
+            </div>
+        </div>
+    </section>
+    <progress id="scrollProgress" max="100" value="0"></progress>
+</header>
+
+<script src="/assets/js/navbar.js"></script>
