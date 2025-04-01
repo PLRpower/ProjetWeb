@@ -55,7 +55,7 @@
         </div>
         <article class="offers__cards">
             {% for offer in offers %}
-            <a class="offers__card" href="#">
+                <a class="offers__card" href="/details-offre?id={{ offer.id }}">
                 <p class="offers__card__company">{{ offer.company.name }}</p>
                 <h3 class="offers__card__title">{{ offer.title }}</h3>
                 <div class="offers__card__tags">

@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Models\Student;
 use App\Models\User;
 
 class UserController extends Controller
@@ -13,38 +12,26 @@ class UserController extends Controller
         $this->twig = $twig;
     }
 
-    public function welcomePage(): void
+    public function connexion(): void
     {
-        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-        $perPage = 10;
-        $offset = ($page - 1) * $perPage;
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            header('Content-Type: application/json');
+            $email = validate_input($_POST['email'], 'email');
+            $password = validate_input($_POST['password'], 'string');
 
-        $students = Student::with('user')->limit($perPage)->offset($offset)->get();
-        $total = User::count();
-        $start = $offset + 1;
-        $end = min($offset + $perPage, $total);
+            if ($email && $password) {
+                $user = User::where('email', $email)->first();
 
-        echo $this->twig->render(
-            'admin.twig',
-            ['students' => $students, 'total' => $total, 'start' => $start, 'end' => $end]
-        );
-    }
-
-    public function createUser(): void
-    {
-        $user = User::create([
-            'email' => 'zqdqdz@gmail.com',
-            'password' => password_hash('password', PASSWORD_DEFAULT),
-            'first_name' => 'John',
-            'last_name' => 'Doe',
-        ]);
-
-        $student = Student::create([
-            'id' => $user->id,
-            'promotion' => '2023',
-            'major' => 'Informatique',
-            'linkedin_url' => 'https://www.linkedin.com/in/johndoe',
-            'internship_status' => 'recherche',
-        ]);
+                if ($user && password_verify($password, $user->password)) {
+                    $_SESSION['user'] = $user;
+                    echo json_encode(["success" => true]);
+                    exit;
+                } else {
+                    echo json_encode(["success" => false, "message" => "Invalid email or password"]);
+                }
+            } else {
+                echo json_encode(["success" => false, "message" => "Invalid input"]);
+            }
+        } 
     }
 }

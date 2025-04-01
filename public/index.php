@@ -1,13 +1,15 @@
 <?php
 
 use App\Controllers\HomeController;
-use App\Controllers\OffersController;
+use App\Controllers\OfferController;
+use App\Controllers\UserController;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../database/database.php';
-require_once __DIR__ . '/../src/Controllers/Pagination.php';
+require_once __DIR__ . '/../src/Utils/Pagination.php';
+require_once __DIR__ . '/../src/Utils/InputValidator.php';
 
 $loader = new FilesystemLoader([
     __DIR__ . '/../src/Views/pages',
@@ -19,7 +21,6 @@ $twig = new Environment($loader, [
     'debug' => true,
     'cache' => false,
 ]);
-setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -27,7 +28,8 @@ ini_set('display_errors', 1);
 $url = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 
 $homeController = new HomeController($twig);
-$offersController = new OffersController($twig);
+$offersController = new OfferController($twig);
+$userController = new UserController($twig);
 
 switch ($url) {
     case '':
@@ -46,7 +48,7 @@ switch ($url) {
         $homeController->adminAccueil();
         break;
     case 'connexion':
-        $homeController->connexion();
+        $userController->connexion();
         break;
     case 'details-offre':
         $offersController->detailsOffre();

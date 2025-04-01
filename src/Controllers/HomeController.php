@@ -6,7 +6,6 @@ use App\Models\Offer;
 
 class HomeController extends Controller
 {
-
     public function __construct($twig)
     {
         $this->twig = $twig;
