@@ -1,5 +1,6 @@
 <?php
 
+use App\Controllers\CompaniesController;
 use App\Controllers\HomeController;
 use App\Controllers\OfferController;
 use App\Controllers\StudentsController;
@@ -11,6 +12,8 @@ require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../database/database.php';
 require_once __DIR__ . '/../src/Utils/Pagination.php';
 require_once __DIR__ . '/../src/Utils/InputValidator.php';
+require_once __DIR__ . '/../src/Utils/SearchValidator.php';
+
 
 $loader = new FilesystemLoader([
     __DIR__ . '/../src/Views/pages',
@@ -30,6 +33,7 @@ $url = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 
 $homeController = new HomeController($twig);
 $offersController = new OfferController($twig);
+$companiesController = new CompaniesController($twig);
 $userController = new UserController($twig);
 $studentsController = new StudentsController($twig);
 
@@ -39,6 +43,9 @@ switch ($url) {
         break;
     case 'dernieres-offres':
         $offersController->dernieresOffres();
+        break;
+    case 'entreprises':
+        $companiesController->companies();
         break;
     case 'mentions-legales':
         $homeController->mentionsLegales();

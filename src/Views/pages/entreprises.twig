@@ -1,0 +1,36 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+    <section class="offers__container">
+        <h2 class="text__center">Nos entreprises partenaires</h2>
+        <p class="text__center">Découvrez l'ensemble des entreprises qui vous proposent des stages sur notre plateforme
+            Intern Rift.</p>
+
+        <article class="offers__cards">
+            {% for company in items %}
+                <a class="offers__card" href="/details-offre?id={{ company.id }}">
+                    <p class="offers__card__company">{{ company.name }}</p>
+                    <h3 class="offers__card__title">{{ company.description }}</h3>
+                    <div class="offers__card__tags">
+                        <p>
+                            <i class="icon">location_on</i>
+                            {{ company.location }}
+                        </p>
+                        <p>
+                            <i class="icon">schedule</i>
+                            Stage
+                        </p>
+                    </div>
+                    <button class="button__primary">Détails
+                        <i class="icon button__icon">arrow_forward</i>
+                    </button>
+                </a>
+            {% endfor %}
+        </article>
+
+        {% include 'pagination.twig' %}
+
+    </section>
+
+{% endblock %}
