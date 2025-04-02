@@ -124,6 +124,14 @@
     color: var(--neutral-100);
 }
 
+.login__error {
+    color: var(--danger);
+    font-size: 18px;
+    font-weight: 500;
+    margin: 10px 0;
+    text-align: center;
+}
+
 @media screen and (max-width: 48rem) {
     .login__container {
         width: -webkit-fill-available;

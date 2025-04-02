@@ -23,7 +23,7 @@ class OfferController extends Controller
         echo $this->twig->render(
             'details-offre.twig',
             [
-                'offer' => $offer,
+                'wishlist' => $offer,
                 'offers' => $offers
             ]
         );
@@ -31,7 +31,8 @@ class OfferController extends Controller
 
     public function dernieresOffres(): void
     {
-        $pagination = paginate(new Offer());
-        echo $this->twig->render('dernieres-offres.twig', $pagination);
+        $offers = Offer::all();
+        $paginateOffers = paginate($offers);
+        echo $this->twig->render('dernieres-offres.twig', $paginateOffers);
     }
 }

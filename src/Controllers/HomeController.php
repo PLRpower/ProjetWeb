@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Offer;
+use App\Utils\Auth;
 
 class HomeController extends Controller
 {
@@ -27,11 +28,6 @@ class HomeController extends Controller
         echo $this->twig->render('admin-accueil.twig');
     }
 
-    public function connexion(): void
-    {
-        echo $this->twig->render('connexion.twig');
-    }
-
     public function modifProfil(): void
     {
         echo $this->twig->render('modif-profil.twig');
@@ -47,8 +43,20 @@ class HomeController extends Controller
         echo $this->twig->render('mentions-legales.twig');
     }
 
-    public function erreur(): void
+    public function erreur($code, $message, $description): void
     {
-        echo $this->twig->render('error.twig');
+        echo $this->twig->render('error.twig', ['message' => $message, 'code' => $code, 'description' => $description]);
+    }
+
+    public function dashboard(): void
+    {
+        if (Auth::isLogged()) {
+            echo $this->twig->render('dashboard.twig', [
+                'user' => Auth::getUser(),
+                'page' => 'dashboard',
+            ]);
+        } else {
+            header('Location: /connexion');
+        }
     }
 }

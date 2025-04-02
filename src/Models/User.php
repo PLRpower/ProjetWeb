@@ -32,4 +32,16 @@ class User extends Model
     {
         return $this->hasOne(Teacher::class, 'id');
     }
+
+    public function getRole()
+    {
+        if ($this->student()->exists()) {
+            return 'student';
+        } elseif ($this->teacher()->exists()) {
+            return 'teacher';
+        } elseif ($this->admin()->exists()) {
+            return 'admin';
+        }
+        return null;
+    }
 }

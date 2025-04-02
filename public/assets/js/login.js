@@ -1,28 +1,19 @@
 const container = document.querySelector('.login__container');
+const loginError = document.querySelector('#loginError');
 const formLogin = document.querySelector('#formLogin');
 
-formLogin.addEventListener('submit', (e) => {
+formLogin.addEventListener('submit', async (e) => {
     e.preventDefault();
-
-    fetch("/login", {
+    const response = await fetch("/connexion", {
         method: "POST",
-        body: new FormData(formLogin)
-    })
-        .then(response => response.text())  // Change json() par text() pour voir ce qui est renvoyé
-        .then(data => {
-            console.log("Réponse brute :", data);
-            try {
-                const jsonData = JSON.parse(data);
-                if (jsonData.success) {
-                    container.classList.add('active');
-                    setTimeout(() => window.location.href = "/accueil", 2000);
-                } else {
-                    document.querySelector("#error-message").textContent = jsonData.message;
-                }
-            } catch (error) {
-                console.error("Erreur lors du parsing JSON :", error);
-            }
-        })
-        .catch(error => console.error("Erreur fetch :", error));
+        body: new FormData(formLogin),
+    });
 
+    const jsonData = await response.json();
+    if (jsonData.success) {
+        container.classList.add('active');
+        setTimeout(() => (window.location.href = "/dashboard"), 1500);
+    } else {
+        loginError.textContent = jsonData.message;
+    }
 });

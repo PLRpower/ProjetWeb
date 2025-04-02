@@ -2,6 +2,7 @@
 
 use App\Controllers\HomeController;
 use App\Controllers\OfferController;
+use App\Controllers\StudentsController;
 use App\Controllers\UserController;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
@@ -30,6 +31,7 @@ $url = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 $homeController = new HomeController($twig);
 $offersController = new OfferController($twig);
 $userController = new UserController($twig);
+$studentsController = new StudentsController($twig);
 
 switch ($url) {
     case '':
@@ -59,7 +61,20 @@ switch ($url) {
     case 'wishlist':
         $homeController->wishlist();
         break;
+    case 'deconnexion':
+        $userController->deconnexion();
+        break;
+    case 'etudiants':
+        $studentsController->etudiants();
+        break;
+    case 'dashboard':
+        $homeController->dashboard();
+        break;
     default:
-        $homeController->erreur();
+        $homeController->erreur(
+            '404',
+            'Page non trouvée',
+            "La page que vous cherchez n'existe pas ou a été déplacée. Veuillez vérifier l'URL et réessayer."
+        );
         break;
 }

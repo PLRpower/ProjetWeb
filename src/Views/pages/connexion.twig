@@ -19,12 +19,7 @@
                 <div class="login__forgot">
                     <a href="#">Mot de passe oublié ?</a>
                 </div>
-                {% if(error) %}
-                    <div class="login__error">
-                        <p class="error">{{ error }}</p>
-                    </div>
-                {% endif %}
-                <p></p>
+                <p class="login__error" id="loginError"></p>
                 <input type="submit" class="button__primary button--small" value="Se connecter">
             </form>
         </div>

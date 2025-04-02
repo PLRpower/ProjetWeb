@@ -1,4 +1,4 @@
-{% extends "dashboard.twig" %}
+{% extends "sidebar.twig" %}
 
 {% block content %}
 
@@ -29,9 +29,9 @@
             </thead>
 
             <tbody>
-            {% for student in students %}
+            {% for student in items %}
             <tr>
-                <td><img src="/assets/img/martin.webp" alt="student_1" class="picto_table"></td>
+                <td><img src="/assets/img/martin.webp" alt="{{ student.id }}" class="picto_table"></td>
                 <td>{{ student.user.last_name }}</td>
                 <td>{{ student.user.first_name }}</td>
                 <td>{{ student.user.email }}</td>

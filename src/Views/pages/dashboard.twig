@@ -1,0 +1,13 @@
+{% extends "sidebar.twig" %}
+
+{% block content %}
+
+    <section class="admin__container">
+        <div class="admin__content">
+            <h2>Bonjour, {{ user.first_name }} !</h2>
+            <p>Bienvenue sur votre espace {{ user.getRole() }}.</p>
+        </div>
+
+    </section>
+
+{% endblock %}
