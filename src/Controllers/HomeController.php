@@ -60,6 +60,11 @@ class HomeController extends Controller
         }
     }
 
+    public function postuler(): void
+    {
+        echo $this->twig->render('applied.twig');
+    }
+
     public function recherche(): void
     {
         $search = validate_input($_POST['search'], 'string');
