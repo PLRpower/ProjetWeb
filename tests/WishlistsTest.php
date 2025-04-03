@@ -3,8 +3,7 @@
 use App\Models\Wishlist;
 use PHPUnit\Framework\TestCase;
 
-require_once __DIR__ . '/StudentsTest.php';
-require_once __DIR__ . '/OffersTest.php';
+require_once __DIR__ . '/../database/database.php';
 
 function createRandomWishlist(): Wishlist
 {

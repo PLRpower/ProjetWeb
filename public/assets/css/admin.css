@@ -136,9 +136,34 @@
     padding: min(30px, 7%);
 }
 
+.crud_add {
+    margin-top: 20px;
+    width: fit-content;
+}
+
+.star {
+    transition: transform 0.2s ease;
+    cursor: pointer;
+    width: 32px;
+}
+
+.star:hover {
+    transform: scale(1.2);
+}
+
+.stars_admin {
+    display: flex;
+}
+
+.CUDR .stars_admin .icon {
+    height: 30px;
+    width: 30px;
+    margin: 0;
+}
 
 /*Tableau CUDR */
 .CUDR {
+    height: fit-content;
     border-collapse: collapse;
     overflow-x: scroll;
     border-radius: 10px;

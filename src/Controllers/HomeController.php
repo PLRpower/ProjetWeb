@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\Company;
 use App\Models\Offer;
+use App\Models\Student;
 use App\Utils\Auth;
 
 class HomeController extends Controller
@@ -17,16 +18,6 @@ class HomeController extends Controller
     {
         $offers = Offer::latest()->limit(4)->get();
         echo $this->twig->render('accueil.twig', ['offers' => $offers]);
-    }
-
-    public function admin(): void
-    {
-        echo $this->twig->render('admin.twig');
-    }
-
-    public function adminAccueil(): void
-    {
-        echo $this->twig->render('admin-accueil.twig');
     }
 
     public function wishlist(): void
@@ -52,8 +43,15 @@ class HomeController extends Controller
     public function dashboard(): void
     {
         if (Auth::isLogged()) {
+            $students = Student::all();
+            $countFinished = $students->where('internship_status', 'terminé')->count();
+            $countSearching = $students->where('internship_status', 'recherche')->count();
+            $countInProgress = $students->where('internship_status', 'en cours')->count();
             echo $this->twig->render('dashboard.twig', [
                 'menu' => 'dashboard',
+                'countFinished' => $countFinished,
+                'countSearching' => $countSearching,
+                'countInProgress' => $countInProgress,
             ]);
         } else {
             header('Location: /connexion');
@@ -67,7 +65,12 @@ class HomeController extends Controller
 
     public function recherche(): void
     {
-        $search = validate_input($_POST['search'], 'string');
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $search = validate_input($_POST['search'], 'string');
+        } elseif($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $search = validate_input($_GET['search'], 'string');
+        }
+
         $offers = Offer::where('title', 'LIKE', "%$search%")->
         orWhere('description', 'LIKE', "%$search%")->
         orWhereHas('company', function ($query) use ($search) {

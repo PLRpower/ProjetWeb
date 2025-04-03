@@ -7,17 +7,15 @@
             <h2>{{ company.name }}</h2>
             <p>{{ company.description }}</p>
 
-            {% if company.evaluations.rating != 0 %}
-            <div style="padding: 10px">
-                {% for i in 0..(company.evaluations.rating-1) %}
-                    <img src="/assets/img/Filled_star.svg" class="icon button__icon">
+            {% if company.evaluation.rating %}
+            <div>
+                {% for i in 1..5 %}
+                    {% if i <= company.evaluation.rating %}
+                        <img src="/assets/img/filled_star.svg" class="icon button__icon">
+                    {% else %}
+                        <img src="/assets/img/star.svg" class="icon button__icon">
+                    {% endif %}
                 {% endfor %}
-
-                {% if company.evaluations.rating < 5 %}
-                {% for i in 0..( 4 - company.evaluations.rating ) %}
-                <i class="icon button__icon">star</i>
-                {% endfor %}
-                {% endif %}
             </div>
             {% endif %}
 

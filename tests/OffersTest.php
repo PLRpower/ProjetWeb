@@ -3,7 +3,7 @@
 use App\Models\Offer;
 use PHPUnit\Framework\TestCase;
 
-require_once __DIR__ . '/CompaniesTest.php';
+require_once __DIR__ . '/../database/database.php';
 
 function createRandomOffer(): Offer
 {

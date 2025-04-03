@@ -18,7 +18,7 @@ class Company extends Model
     ];
     public $timestamps = true;
 
-    public function evaluations(): HasOne
+    public function evaluation(): HasOne
     {
         return $this->hasOne(Evaluation::class);
     }

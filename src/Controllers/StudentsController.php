@@ -15,7 +15,7 @@ class StudentsController extends Controller
 
     public function adminEtudiants(): void
     {
-        if (Auth::checkRole(['admin'])) {
+        if (Auth::checkRole(['teacher', 'admin'])) {
             $students = Student::all();
             $data = paginate($students);
             $data['menu'] = 'etudiants';

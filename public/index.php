@@ -67,12 +67,6 @@ switch ($url) {
     case 'cgu':
         $homeController->cgu();
         break;
-    case 'admin':
-        $homeController->admin();
-        break;
-    case 'admin-accueil':
-        $homeController->adminAccueil();
-        break;
     case 'connexion':
         $userController->connexion();
         break;
@@ -96,6 +90,9 @@ switch ($url) {
         break;
     case 'supprimer-entreprise':
         $companiesController->supprimerEntreprise();
+        break;
+    case 'ajouter-entreprise':
+        $companiesController->ajouterEntreprise();
         break;
     case 'admin-pilotes':
         $teacherController->adminPilotes();
@@ -121,7 +118,6 @@ switch ($url) {
     case 'dashboard':
         $homeController->dashboard();
         break;
-
     case 'postuler':
         $homeController->postuler();
         break;

@@ -60,9 +60,9 @@ suit :
 - Models : Interaction avec la base de données.
 - Views : Templates de présentation (utilise Twig comme moteur de templates).
 
-## Tests
+## Tests & génération de données
 
-Les tests sont situés dans le dossier tests. Vous pouvez exécuter les tests avec PHPUnit :
+Les tests permettent de vérifier le bon fonctionnement de l'application et de générer des données test dans la base de données. Vous pouvez exécuter les tests avec PHPUnit :
 
 ```bash
 composer test

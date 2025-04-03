@@ -3,6 +3,9 @@
 use App\Models\Company;
 use PHPUnit\Framework\TestCase;
 
+require_once __DIR__ . '/../database/database.php';
+
+
 function createRandomCompany(): Company
 {
     $name = ['Google', 'Apple', 'Facebook', 'Amazon', 'Microsoft', 'Mundo Economics', 'LinkedIn', 'Moodle', 'Siemens'];

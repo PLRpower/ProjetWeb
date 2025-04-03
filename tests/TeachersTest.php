@@ -1,9 +1,11 @@
 <?php
 
 use App\Models\Teacher;
+use App\Models\User;
+use PHPUnit\Framework\Attributes\DependsExternal;
 use PHPUnit\Framework\TestCase;
 
-require_once __DIR__ . '/UsersTest.php';
+require_once __DIR__ . '/../database/database.php';
 
 function createRandomTeacher(): Teacher
 {
@@ -11,7 +13,7 @@ function createRandomTeacher(): Teacher
     $specialization = ['IA', 'Génie civil', 'Réseaux', 'IoT', 'Cybersécurité', 'Big Data', 'DevOps', 'Cloud'];
     $office = ['B101', 'B102', 'B103', 'B104'];
 
-    $user = createRandomUser();
+    $user = User::inRandomOrder()->first();
 
     return Teacher::create([
         'id' => $user->id,
@@ -24,6 +26,7 @@ function createRandomTeacher(): Teacher
 
 class TeachersTest extends TestCase
 {
+    #[DependsExternal(UsersTest::class, 'testGetUser')]
     public static function setUpBeforeClass(): void
     {
         for ($i = 0; $i < 10; $i++) {

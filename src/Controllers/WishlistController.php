@@ -24,8 +24,6 @@ class WishlistController extends Controller
         } else {
             header('Location: /connexion');
         }
-
-        Evaluation::all()->evaluations();
     }
 
     public function ajouterWishlist(): void

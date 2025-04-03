@@ -1,11 +1,12 @@
 <?php
 
 use App\Models\Admin;
+use App\Models\User;
 use PHPUnit\Framework\Attributes\DependsExternal;
 use PHPUnit\Framework\TestCase;
 
+require_once __DIR__ . '/../database/database.php';
 require_once __DIR__ . '/UsersTest.php';
-require_once __DIR__ . '/CompaniesTest.php';
 
 function createRandomAdmin(): Admin
 {
@@ -13,7 +14,10 @@ function createRandomAdmin(): Admin
     $specialization = ['IA', 'Génie civil', 'Réseaux', 'IoT', 'Cybersécurité', 'Big Data', 'DevOps', 'Cloud'];
     $office = ['B101', 'B102', 'B103', 'B104'];
 
-    $user = createRandomUser();
+    $user = User::whereDoesntHave('teacher')
+        ->whereDoesntHave('student')
+        ->inRandomOrder()
+        ->first();
 
     return Admin::create([
         'id' => $user->id,
@@ -27,6 +31,7 @@ function createRandomAdmin(): Admin
 
 class AdminsTest extends TestCase
 {
+    #[DependsExternal(UsersTest::class, 'testGetUser')]
     public static function setUpBeforeClass(): void
     {
         for ($i = 0; $i < 2; $i++) {
@@ -34,7 +39,7 @@ class AdminsTest extends TestCase
         }
     }
 
-    #[DependsExternal(CompaniesTest::class, 'testGetCompany')]
+    #[DependsExternal(UsersTest::class, 'testGetUser')]
     public function testGetTeacher()
     {
         $user = Admin::first();

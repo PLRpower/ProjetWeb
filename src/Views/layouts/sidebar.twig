@@ -42,7 +42,7 @@
                 <span>Accueil</span>
             </a>
         </li>
-        {% if user.role == 'admin' %}
+        {% if user.role == 'admin' or user.role == 'teacher' %}
             <li {% if menu == 'etudiants' %}class="active"{% endif %}>
                 <a href="/admin-etudiants">
                 <i class="icon">school</i>
