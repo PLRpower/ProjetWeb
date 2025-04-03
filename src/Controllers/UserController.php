@@ -17,7 +17,7 @@ class UserController extends Controller
     {
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             if (Auth::isLogged()) {
-                header('Location: /');
+                header('Location: /dashboard');
                 exit;
             } else {
                 echo $this->twig->render('connexion.twig');
@@ -47,5 +47,14 @@ class UserController extends Controller
         Auth::logout();
         header('Location: /');
         exit;
+    }
+
+    public function modifProfil(): void
+    {
+        if (Auth::isLogged()) {
+            echo $this->twig->render('modif-profil.twig');
+        } else {
+            header('Location: /connexion');
+        }
     }
 }

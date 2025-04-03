@@ -62,6 +62,10 @@ input:hover {
     border-color: var(--primary);
 }
 
+input::placeholder {
+    opacity: 0.3;
+}
+
 hr {
     border: 1px solid var(--neutral-300);
     margin: 50px 0;

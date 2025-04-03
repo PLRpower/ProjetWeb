@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Company;
-use App\Models\Evaluation;
+use App\Utils\Auth;
 
 class CompaniesController extends Controller
 {
@@ -35,5 +35,21 @@ class CompaniesController extends Controller
         $companies = Company::all();
         $paginateCompanies = paginate($companies);
         echo $this->twig->render('entreprises.twig', $paginateCompanies);
+    }
+
+    public function adminEntreprises(): void
+    {
+        if (Auth::checkRole(['teacher', 'admin'])) {
+            $companies = Company::all();
+            $data = paginate($companies);
+            $data['menu'] = 'entreprises';
+            echo $this->twig->render('admin-entreprises.twig', $data);
+        } else {
+            echo $this->twig->render('error.twig', [
+                'message' => 'Accès refusé',
+                'code' => 403,
+                'description' => 'Vous n\'avez pas les droits nécessaires pour accéder à cette page.'
+            ]);
+        }
     }
 }

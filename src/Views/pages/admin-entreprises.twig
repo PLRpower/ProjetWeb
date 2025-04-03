@@ -1,0 +1,66 @@
+{% extends "sidebar.twig" %}
+
+{% block content %}
+
+    <section id="popUpDeleteOverlay">
+        <div class="pop-up_delete-content">
+            <h5>Etes vous sûr de vouloir supprimer cette entreprise.</h5>
+            <form method="POST" id="deleteForm" action="/supprimer-entreprise" class=form__delete>
+                <input type="hidden" name="id" id="idOffer" value="">
+                <input type="submit" class="pop-up_delete-confirm" value="Supprimer">
+            </form>
+            <a class="pop-up_delete-exit" onclick="toggleDelete()">Annuler</a>
+        </div>
+    </section>
+
+    <section class="admin__container">
+        <div class="admin__content">
+            <h2>Gérer les entreprises</h2>
+            <p>Listez, modifiez et supprimez les entreprises de l'application.</p>
+        </div>
+    </section>
+
+    <button class="button__secondary button--small button__cudr">Ajouter une entreprise</button>
+
+    <section class="CUDR">
+        <table>
+            <thead>
+            <tr>
+                <td>Nom</td>
+                <td>Description</td>
+                <td>Ville</td>
+                <td>Email</td>
+                <td>Telephone</td>
+                <td></td>
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for company in items %}
+                <tr>
+                    <td>{{ company.name }}</td>
+                    <td>{{ company.description }}</td>
+                    <td>{{ company.location }}</td>
+                    <td>{{ company.email_contact }}</td>
+                    <td>{{ company.telephone_contact }}</td>
+
+                    <td>
+                        <button class="CUDR_button edit">
+                            <i class="icon">edit</i>
+                            Modifier
+                        </button>
+
+                        <button onclick="toggleDelete({{ offer.id }})" type="submit" class="CUDR_button delete">
+                            <i class="icon">delete</i>
+                            Supprimer
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+    {% include 'pagination.twig' %}
+
+{% endblock %}

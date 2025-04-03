@@ -1,21 +1,26 @@
-{% extends "base.twig" %}
+{% extends "sidebar.twig" %}
 
 {% block content %}
 
     <div class="profile">
         <div class="profile-picture">
-            <img src="https://via.placeholder.com/35" alt="Profile">
+            <img src="/assets/img/martin.webp" alt="Profile">
             <div class="edit-icon">✎</div>
         </div>
 
         <div class="form-group">
-            <label for="name">Your Name</label>
-            <input type="text" id="name">
+            <label for="name">Votre nom</label>
+            <input type="text" id="name" value="{{ user.last_name }}">
         </div>
 
         <div class="form-group">
-            <label for="email">Your Email</label>
-            <input type="email" id="email">
+            <label for="name">Votre prénom</label>
+            <input type="text" id="name" value="{{ user.first_name }}">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Votre Email</label>
+            <input type="email" id="email" value="{{ user.email }}">
         </div>
 
         <div class="form-group">
@@ -26,13 +31,13 @@
         <div class="form-row">
             <div class="form-col">
                 <div class="form-group">
-                    <label for="password">Password</label>
+                    <label for="password">Mot de passe</label>
                     <input type="password" id="password">
                 </div>
             </div>
             <div class="form-col">
                 <div class="form-group">
-                    <label for="confirm-password">Confirm Password</label>
+                    <label for="confirm-password">Confirmer le Mot de passe</label>
                     <input type="password" id="confirm-password">
                 </div>
             </div>
@@ -68,15 +73,6 @@
             </div>
         </div>
 
-        <div class="social-networks">
-            <div class="social-networks-title">Connect Social Networks</div>
-            <div class="social-icons">
-                <div class="social-icon">f</div>
-                <div class="social-icon">t</div>
-                <div class="social-icon">in</div>
-                <div class="social-icon">Y</div>
-            </div>
-        </div>
 
     </div>
 

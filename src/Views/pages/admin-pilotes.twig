@@ -2,15 +2,15 @@
 
 {% block content %}
 
-    <section id="popUpDeleteOverlay">
-        <div class="pop-up_delete-content">
-            <h5>Etes vous sûr de vouloir supprimer cet étudiant.</h5>
 
-
-            <a class="pop-up_delete-confirm" onclick="toggleDelete()">Confirmer</a>
-            <a class="pop-up_delete-exit" onclick="toggleDelete()">Annuler</a>
+    <section class="admin__container">
+        <div class="admin__content">
+            <h2>Gérer les étudiants</h2>
+            <p>Listez, modifiez et supprimez les étudiants de l'application.</p>
         </div>
     </section>
+
+    <button onclick="toggleEdit()" class="button__secondary button--small button__cudr">Ajouter un étudiant</button>
 
     <section class="CUDR">
         <table>
@@ -22,9 +22,7 @@
                 <td>Email</td>
                 <td>Promotion</td>
                 <td>Etat</td>
-                <td>
-                    <button onclick="toggleEdit()" class="CUDR_add_button">Ajouter un étudiant</button>
-                </td>
+                <td></td>
             </tr>
             </thead>
 
@@ -37,17 +35,23 @@
                 <td>{{ student.user.email }}</td>
                 <td>{{ student.promotion }}</td>
 
-                <td class="student_status">
-                    <p>Research Ongoing</p>
+                <td class="student_status {% if student.internship_status == 'en cours' %}in-progress {% elseif student.internship_status == 'recherche' %}searching {% elseif student.internship_status == 'terminé' %}finished{% endif %}">
+                    {% if student.internship_status == 'en cours' %}
+                        <p>En cours</p>
+                    {% elseif student.internship_status == 'recherche' %}
+                        <p>Recherche</p>
+                    {% elseif student.internship_status == 'terminé' %}
+                        <p>Terminé</p>
+                    {% endif %}
                 </td>
 
                 <td>
-                    <button onclick="toggleEdit()" class="CUDR_button">
+                    <button onclick="toggleEdit()" class="CUDR_button edit">
                         <i class="icon">edit</i>
                         Modifier
                     </button>
 
-                    <button onclick="toggleDelete()" class="CUDR_button">
+                    <button onclick="toggleDelete()" class="CUDR_button delete">
                         <i class="icon">delete</i>
                         Supprimer
                     </button>
@@ -58,19 +62,6 @@
         </table>
     </section>
 
-    <section class="CUDR_bot">
-        <p>{{ start }} - {{ end }} sur {{ total }}</p>
-
-        <div class="CUDR_pagination">
-            <a href="#">&laquo;</a>
-            <a href="#">1</a>
-            <a class="active" href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">5</a>
-            <a href="#">6</a>
-            <a href="#">&raquo;</a>
-        </div>
-    </section>
+    {% include 'pagination.twig' %}
 
 {% endblock %}

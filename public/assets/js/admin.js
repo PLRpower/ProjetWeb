@@ -1,9 +1,6 @@
-function toggleEdit() {
-    let popup = document.querySelector("#pop-up_edit-overlay");
-    popup.classList.toggle("active");
-}
-
-function toggleDelete() {
+function toggleDelete($id) {
     let popup = document.querySelector("#popUpDeleteOverlay");
+    let idOffer = document.getElementById("idOffer");
+    idOffer.value = $id;
     popup.classList.toggle("active");
 }

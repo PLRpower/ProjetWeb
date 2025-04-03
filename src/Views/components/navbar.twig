@@ -23,9 +23,15 @@
                         <i class="icon">search</i>
                     </button>
                 </form>
+                {% if user %}
+                    <a href="/dashboard" id="headerLogin">
+                        <img src="/assets/img/martin.webp" alt="Avatar" class="profile__picture">
+                    </a>
+                {% else %}
                 <a class="button__primary button--small" href="/connexion" id="headerLogin">Se connecter
                     <i class="icon button__icon">arrow_forward</i>
                 </a>
+                {% endif %}
             </div>
         </div>
     </section>

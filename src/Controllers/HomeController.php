@@ -28,11 +28,6 @@ class HomeController extends Controller
         echo $this->twig->render('admin-accueil.twig');
     }
 
-    public function modifProfil(): void
-    {
-        echo $this->twig->render('modif-profil.twig');
-    }
-
     public function wishlist(): void
     {
         echo $this->twig->render('wishlist.twig');
@@ -52,8 +47,7 @@ class HomeController extends Controller
     {
         if (Auth::isLogged()) {
             echo $this->twig->render('dashboard.twig', [
-                'user' => Auth::getUser(),
-                'page' => 'dashboard',
+                'menu' => 'dashboard',
             ]);
         } else {
             header('Location: /connexion');

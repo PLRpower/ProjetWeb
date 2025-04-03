@@ -5,9 +5,9 @@ use App\Controllers\HomeController;
 use App\Controllers\OfferController;
 use App\Controllers\StudentsController;
 use App\Controllers\UserController;
+use App\Controllers\WishlistController;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
-
 
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../database/database.php';
@@ -27,7 +27,12 @@ $twig = new Environment($loader, [
     'cache' => false,
 ]);
 
-$twig->addExtension(new \Twig\Extension\DebugExtension());
+if (!isset($_SESSION)) {
+    session_start();
+}
+if (isset($_SESSION['user'])) {
+    $twig->addGlobal('user', $_SESSION['user']);
+}
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -39,6 +44,7 @@ $offersController = new OfferController($twig);
 $companiesController = new CompaniesController($twig);
 $userController = new UserController($twig);
 $studentsController = new StudentsController($twig);
+$wishlistController = new WishlistController($twig);
 
 switch ($url) {
     case '':
@@ -46,9 +52,6 @@ switch ($url) {
         break;
     case 'dernieres-offres':
         $offersController->dernieresOffres();
-        break;
-    case 'details-offre':
-        $offersController->detailsOffre();
         break;
     case 'entreprises':
         $companiesController->companies();
@@ -68,18 +71,41 @@ switch ($url) {
     case 'connexion':
         $userController->connexion();
         break;
-
-    case 'modif-profil':
-        $homeController->modifProfil();
+    case 'details-offre':
+        $offersController->detailsOffre();
+        break;
+    case 'modifier-profil':
+        $userController->modifProfil();
         break;
     case 'wishlist':
-        $homeController->wishlist();
+        $wishlistController->wishlist();
+        break;
+    case 'ajouter-wishlist':
+        $wishlistController->ajouterWishlist();
         break;
     case 'deconnexion':
         $userController->deconnexion();
         break;
-    case 'etudiants':
-        $studentsController->etudiants();
+    case 'admin-entreprises':
+        $companiesController->adminEntreprises();
+        break;
+    case 'supprimer-entreprise':
+        $companiesController->supprimerEntreprise();
+        break;
+    case 'admin-accueil':
+        $homeController->adminAccueil();
+        break;
+    case 'admin-offres':
+        $offersController->adminOffres();
+        break;
+    case 'supprimer-offre':
+        $offersController->supprimerOffre();
+        break;
+    case 'admin-etudiants':
+        $studentsController->adminEtudiants();
+        break;
+    case 'supprimer-etudiant':
+        $studentsController->supprimerEtudiant();
         break;
     case 'dashboard':
         $homeController->dashboard();

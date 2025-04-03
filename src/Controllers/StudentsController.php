@@ -12,14 +12,13 @@ class StudentsController extends Controller
         $this->twig = $twig;
     }
 
-    public function etudiants(): void
+    public function adminEtudiants(): void
     {
         if (Auth::checkRole(['admin'])) {
             $students = Student::all();
             $data = paginate($students);
-            $data['user'] = Auth::getUser();
-            $data['page'] = 'etudiants';
-            echo $this->twig->render('crud.twig', $data);
+            $data['menu'] = 'etudiants';
+            echo $this->twig->render('admin-etudiants.twig', $data);
         } else {
             echo $this->twig->render('error.twig', [
                 'message' => 'Accès refusé',
@@ -27,6 +26,20 @@ class StudentsController extends Controller
                 'description' => "Vous n'avez pas les droits nécessaires pour accéder à cette page."
             ]);
             exit;
+        }
+    }
+
+    public function supprimerEtudiant(): void
+    {
+        if (Auth::checkRole(['teacher', 'admin'])) {
+            $studentId = validate_input($_POST['id'], 'int');
+            die($studentId);
+        } else {
+            echo $this->twig->render('error.twig', [
+                'message' => 'Accès refusé',
+                'code' => 403,
+                'description' => 'Vous n\'avez pas les droits nécessaires pour accéder à cette page.'
+            ]);
         }
     }
 }

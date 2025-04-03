@@ -29,45 +29,71 @@
 <nav id="adminSidebar">
     <ul class="sidebar__list">
         <li class="sidebar__logo__container">
-            <img src="/assets/img/logo.webp" alt="Logo" class="sidebar__logo">
+            <a href="/">
+                <img src="/assets/img/logo.webp" alt="Logo" class="sidebar__logo">
+            </a>
             <button onclick="changeSidebar()" id="toggleBtn">
                 <i class="icon">keyboard_double_arrow_left</i>
             </button>
         </li>
-        <li {% if page == 'dashboard' %}class="active"{% endif %}>
+        <li {% if menu == 'dashboard' %}class="active"{% endif %}>
             <a href="/dashboard">
                 <i class="icon">home</i>
                 <span>Accueil</span>
             </a>
         </li>
-        <li {% if page == 'etudiants' %}class="active"{% endif %}>
-            <a href="/etudiants">
+        {% if user.role == 'admin' %}
+            <li {% if menu == 'etudiants' %}class="active"{% endif %}>
+                <a href="/admin-etudiants">
                 <i class="icon">school</i>
                 <span>Etudiants</span>
             </a>
         </li>
-        <li>
-            <a href="">
+        {% endif %}
+        {% if user.role == 'admin' %}
+            <li {% if menu == 'pilotes' %}class="active"{% endif %}>
+                <a href="/admin-pilotes">
                 <i class="icon">supervisor_account</i>
                 <span>Pilotes</span>
             </a>
         </li>
-        <li>
-            <a href="">
+        {% endif %}
+        <li {% if menu == 'offres' %}class="active"{% endif %}>
+            <a href="/admin-offres">
                 <i class="icon">work</i>
                 <span>Offres</span>
             </a>
         </li>
+        <li {% if menu == 'entreprises' %}class="active"{% endif %}>
+            <a href="/admin-entreprises">
+                <i class="icon">factory</i>
+                <span>Entreprises</span>
+            </a>
+        </li>
+        {% if user.role == 'student' %}
+            <li {% if menu == 'wishlist' %}class="active"{% endif %}>
+                <a href="/wishlist">
+                    <i class="icon">checklist</i>
+                    <span>Wishlist</span>
+                </a>
+            </li>
+        {% endif %}
     </ul>
 
     <ul class="sidebar__list">
         <li>
-            <a href="">
+            <a href="/modifier-profil">
                 <img src="/assets/img/martin.webp" alt="Avatar" class="profile__picture">
                 <div class="profile__info">
                     <span class="name">{{ user.first_name }} {{ user.last_name }}</span>
                     <span class="email">{{ user.email }}</span>
                 </div>
+            </a>
+        </li>
+        <li>
+            <a href="/deconnexion" class="logout__button">
+                <i class="icon">logout</i>
+                <span>Déconnexion</span>
             </a>
         </li>
     </ul>
@@ -82,6 +108,7 @@
 </main>
 
 <script src="/assets/js/sidebar.js"></script>
+<script src="/assets/js/admin.js"></script>
 
 </body>
 </html>
