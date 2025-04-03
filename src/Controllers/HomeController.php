@@ -68,7 +68,11 @@ class HomeController extends Controller
     public function recherche(): void
     {
         $search = validate_input($_POST['search'], 'string');
-        $offers = Offer::where('title', 'LIKE', "%$search%")->orWhere('description', 'LIKE', "%$search%")->get();
+        $offers = Offer::where('title', 'LIKE', "%$search%")->
+        orWhere('description', 'LIKE', "%$search%")->
+        orWhereHas('company', function ($query) use ($search) {
+            $query->where('name', 'LIKE', "%$search%");
+        })->get();
         $companies = Company::where('name', 'LIKE', "%$search%")->get();
         echo $this->twig->render('recherche.twig', [
             'offers' => $offers,
