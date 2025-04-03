@@ -64,6 +64,9 @@ switch ($url) {
     case 'mentions-legales':
         $homeController->mentionsLegales();
         break;
+    case 'cgu':
+        $homeController->cgu();
+        break;
     case 'admin':
         $homeController->admin();
         break;

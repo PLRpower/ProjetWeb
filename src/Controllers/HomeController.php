@@ -38,6 +38,11 @@ class HomeController extends Controller
         echo $this->twig->render('mentions-legales.twig');
     }
 
+    public function cgu(): void
+    {
+        echo $this->twig->render('cgu.twig');
+    }
+
     public function erreur($code, $message, $description): void
     {
         echo $this->twig->render('error.twig', ['message' => $message, 'code' => $code, 'description' => $description]);
