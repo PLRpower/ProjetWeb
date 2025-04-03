@@ -58,4 +58,8 @@ class HomeController extends Controller
             header('Location: /connexion');
         }
     }
+    public function postuler(): void
+    {
+        echo $this->twig->render('applied.twig');
+    }
 }

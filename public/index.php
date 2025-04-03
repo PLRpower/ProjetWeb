@@ -118,6 +118,10 @@ switch ($url) {
     case 'dashboard':
         $homeController->dashboard();
         break;
+
+    case 'postuler':
+        $homeController->postuler();
+        break;
     default:
         $homeController->erreur(
             '404',
