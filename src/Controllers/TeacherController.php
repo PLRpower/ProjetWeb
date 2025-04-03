@@ -2,41 +2,39 @@
 
 namespace App\Controllers;
 
-use App\Models\Student;
-use App\Models\User;
+use App\Models\Teacher;
 use App\Utils\Auth;
 
-class StudentsController extends Controller
+class TeacherController extends Controller
 {
     public function __construct($twig)
     {
         $this->twig = $twig;
     }
 
-    public function adminEtudiants(): void
+    public function adminPilotes(): void
     {
         if (Auth::checkRole(['admin'])) {
-            $students = Student::all();
-            $data = paginate($students);
-            $data['menu'] = 'etudiants';
-            echo $this->twig->render('admin-etudiants.twig', $data);
+            $teachers = Teacher::all();
+            $data = paginate($teachers);
+            $data['menu'] = 'pilotes';
+            echo $this->twig->render('admin-pilotes.twig', $data);
         } else {
             echo $this->twig->render('error.twig', [
                 'message' => 'Accès refusé',
                 'code' => 403,
-                'description' => "Vous n'avez pas les droits nécessaires pour accéder à cette page."
+                'description' => 'Vous n\'avez pas les droits nécessaires pour accéder à cette page.'
             ]);
-            exit;
         }
     }
 
-    public function supprimerEtudiant(): void
+    public function supprimerPilote(): void
     {
-        if (Auth::checkRole(['teacher', 'admin'])) {
+        if (Auth::checkRole(['admin'])) {
             $studentId = validate_input($_POST['id'], 'int');
-            $student = User::findOrFail($studentId);
+            $student = Teacher::findOrFail($studentId);
             $student->delete();
-            header('Location: /admin-etudiants');
+            header('Location: /admin-pilotes');
         } else {
             echo $this->twig->render('error.twig', [
                 'message' => 'Accès refusé',

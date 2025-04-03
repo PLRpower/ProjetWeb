@@ -4,6 +4,7 @@ use App\Controllers\CompaniesController;
 use App\Controllers\HomeController;
 use App\Controllers\OfferController;
 use App\Controllers\StudentsController;
+use App\Controllers\TeacherController;
 use App\Controllers\UserController;
 use App\Controllers\WishlistController;
 use Twig\Environment;
@@ -45,6 +46,7 @@ $companiesController = new CompaniesController($twig);
 $userController = new UserController($twig);
 $studentsController = new StudentsController($twig);
 $wishlistController = new WishlistController($twig);
+$teacherController = new TeacherController($twig);
 
 switch ($url) {
     case '':
@@ -92,8 +94,11 @@ switch ($url) {
     case 'supprimer-entreprise':
         $companiesController->supprimerEntreprise();
         break;
-    case 'admin-accueil':
-        $homeController->adminAccueil();
+    case 'admin-pilotes':
+        $teacherController->adminPilotes();
+        break;
+    case 'supprimer-pilote':
+        $teacherController->supprimerPilote();
         break;
     case 'admin-offres':
         $offersController->adminOffres();

@@ -52,4 +52,20 @@ class CompaniesController extends Controller
             ]);
         }
     }
+
+    public function supprimerEntreprise(): void
+    {
+        if (Auth::checkRole(['teacher', 'admin'])) {
+            $companyId = validate_input($_POST['id'], 'int');
+            $company = Company::findOrFail($companyId);
+            $company->delete();
+            header('Location: /admin-entreprises');
+        } else {
+            echo $this->twig->render('error.twig', [
+                'message' => 'Accès refusé',
+                'code' => 403,
+                'description' => 'Vous n\'avez pas les droits nécessaires pour accéder à cette page.'
+            ]);
+        }
+    }
 }

@@ -2,15 +2,25 @@
 
 {% block content %}
 
-
-    <section class="admin__container">
-        <div class="admin__content">
-            <h2>Gérer les étudiants</h2>
-            <p>Listez, modifiez et supprimez les étudiants de l'application.</p>
+    <section id="popUpDeleteOverlay">
+        <div class="pop-up_delete-content">
+            <h5>Etes vous sûr de vouloir supprimer ce pilote.</h5>
+            <form method="POST" id="deleteForm" action="/supprimer-pilote" class=form__delete>
+                <input type="hidden" name="id" id="idOffer" value="">
+                <input type="submit" class="pop-up_delete-confirm" value="Supprimer">
+            </form>
+            <a class="pop-up_delete-exit" onclick="toggleDelete()">Annuler</a>
         </div>
     </section>
 
-    <button onclick="toggleEdit()" class="button__secondary button--small button__cudr">Ajouter un étudiant</button>
+    <section class="admin__container">
+        <div class="admin__content">
+            <h2>Gérer les pilotes</h2>
+            <p>Listez, modifiez et supprimez les pilotes de l'application.</p>
+        </div>
+    </section>
+
+    <button onclick="toggleEdit()" class="button__secondary button--small button__cudr">Ajouter un pilote</button>
 
     <section class="CUDR">
         <table>
@@ -20,38 +30,25 @@
                 <td>Nom</td>
                 <td>Prénom</td>
                 <td>Email</td>
-                <td>Promotion</td>
-                <td>Etat</td>
                 <td></td>
             </tr>
             </thead>
 
             <tbody>
-            {% for student in items %}
+            {% for teacher in items %}
             <tr>
-                <td><img src="/assets/img/martin.webp" alt="{{ student.id }}" class="picto_table"></td>
-                <td>{{ student.user.last_name }}</td>
-                <td>{{ student.user.first_name }}</td>
-                <td>{{ student.user.email }}</td>
-                <td>{{ student.promotion }}</td>
-
-                <td class="student_status {% if student.internship_status == 'en cours' %}in-progress {% elseif student.internship_status == 'recherche' %}searching {% elseif student.internship_status == 'terminé' %}finished{% endif %}">
-                    {% if student.internship_status == 'en cours' %}
-                        <p>En cours</p>
-                    {% elseif student.internship_status == 'recherche' %}
-                        <p>Recherche</p>
-                    {% elseif student.internship_status == 'terminé' %}
-                        <p>Terminé</p>
-                    {% endif %}
-                </td>
+                <td><img src="/assets/img/martin.webp" alt="{{ teacher.id }}" class="picto_table"></td>
+                <td>{{ teacher.user.last_name }}</td>
+                <td>{{ teacher.user.first_name }}</td>
+                <td>{{ teacher.user.email }}</td>
 
                 <td>
-                    <button onclick="toggleEdit()" class="CUDR_button edit">
+                    <button class="CUDR_button edit">
                         <i class="icon">edit</i>
                         Modifier
                     </button>
 
-                    <button onclick="toggleDelete()" class="CUDR_button delete">
+                    <button onclick="toggleDelete({{ teacher.id }})" type="submit" class="CUDR_button delete">
                         <i class="icon">delete</i>
                         Supprimer
                     </button>
