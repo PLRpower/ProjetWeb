@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Company;
 use App\Models\Offer;
 use App\Utils\Auth;
 
@@ -57,5 +58,16 @@ class HomeController extends Controller
         } else {
             header('Location: /connexion');
         }
+    }
+
+    public function recherche(): void
+    {
+        $search = validate_input($_POST['search'], 'string');
+        $offers = Offer::where('title', 'LIKE', "%$search%")->orWhere('description', 'LIKE', "%$search%")->get();
+        $companies = Company::where('name', 'LIKE', "%$search%")->get();
+        echo $this->twig->render('recherche.twig', [
+            'offers' => $offers,
+            'companies' => $companies,
+        ]);
     }
 }

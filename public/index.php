@@ -103,6 +103,9 @@ switch ($url) {
     case 'supprimer-pilote':
         $teacherController->supprimerPilote();
         break;
+    case 'recherche':
+        $homeController->recherche();
+        break;
     case 'admin-offres':
         $offersController->adminOffres();
         break;
