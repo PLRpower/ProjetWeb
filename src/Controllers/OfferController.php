@@ -23,7 +23,7 @@ class OfferController extends Controller
         echo $this->twig->render(
             'details-offre.twig',
             [
-                'wishlist' => $offer,
+                'offer' => $offer,
                 'offers' => $offers
             ]
         );

@@ -9,9 +9,9 @@
 
         <article class="offers__cards">
             {% for company in items %}
-                <a class="offers__card" href="/details-offre?id={{ company.id }}">
-                    <p class="offers__card__company">{{ company.name }}</p>
-                    <h3 class="offers__card__title">{{ company.description }}</h3>
+                <a class="offers__card" href="/details-entreprise?id={{ company.id }}">
+                    <h3 class="offers__card__title">{{ company.name }}</h3>
+                    <p class="offers__card__company">{{ company.description }}</p>
                     <div class="offers__card__tags">
                         <p>
                             <i class="icon">location_on</i>

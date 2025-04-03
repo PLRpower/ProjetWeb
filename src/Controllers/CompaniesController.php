@@ -12,21 +12,19 @@ class CompaniesController extends Controller
         $this->twig = $twig;
     }
 
-    public function detailsEntreprises(): void
+    public function detailsEntreprise(): void
     {
         $companiesId = validate_input($_GET['id'], 'int');
 
         // SELECT rating FROM evaluation WHERE id = $companiesId
         $company = Company::findOrFail($companiesId);
-        $rating = Evaluation::where('companyID', $companiesId);
 
         // SELECT * FROM companies WHERE id != $companiesId ORDER BY created_at DESC LIMIT 2
         $companies = Company::inRandomOrder()->where('id', '!=', $companiesId)->limit(2)->get();
         echo $this->twig->render(
-            'details-entreprises.twig',
+            'details-entreprise.twig',
             [
                 'company' => $company,
-                'rating' => $rating,
                 'others' => $companies
             ]
         );

@@ -8,6 +8,7 @@ use App\Controllers\UserController;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
+
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../database/database.php';
 require_once __DIR__ . '/../src/Utils/Pagination.php';
@@ -25,6 +26,8 @@ $twig = new Environment($loader, [
     'debug' => true,
     'cache' => false,
 ]);
+
+$twig->addExtension(new \Twig\Extension\DebugExtension());
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -44,8 +47,14 @@ switch ($url) {
     case 'dernieres-offres':
         $offersController->dernieresOffres();
         break;
+    case 'details-offre':
+        $offersController->detailsOffre();
+        break;
     case 'entreprises':
         $companiesController->companies();
+        break;
+    case 'details-entreprise':
+        $companiesController->detailsEntreprise();
         break;
     case 'mentions-legales':
         $homeController->mentionsLegales();
@@ -59,9 +68,7 @@ switch ($url) {
     case 'connexion':
         $userController->connexion();
         break;
-    case 'details-offre':
-        $offersController->detailsOffre();
-        break;
+
     case 'modif-profil':
         $homeController->modifProfil();
         break;
