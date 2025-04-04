@@ -10,17 +10,17 @@ use App\Controllers\WishlistController;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
-require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/../database/database.php';
-require_once __DIR__ . '/../src/Utils/Pagination.php';
-require_once __DIR__ . '/../src/Utils/InputValidator.php';
-require_once __DIR__ . '/../src/Utils/SearchValidator.php';
+require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/database/database.php';
+require_once __DIR__ . '/src/Utils/Pagination.php';
+require_once __DIR__ . '/src/Utils/InputValidator.php';
+require_once __DIR__ . '/src/Utils/SearchValidator.php';
 
 
 $loader = new FilesystemLoader([
-    __DIR__ . '/../src/Views/pages',
-    __DIR__ . '/../src/Views/components',
-    __DIR__ . '/../src/Views/layouts',
+    __DIR__ . '/src/Views/pages',
+    __DIR__ . '/src/Views/components',
+    __DIR__ . '/src/Views/layouts',
 ]);
 
 $twig = new Environment($loader, [

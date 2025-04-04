@@ -33,9 +33,9 @@
             <div id="rating-container">
                 {% for i in 1..5 %}
                     {% if i <= company.evaluation.rating %}
-                        <img src="/assets/img/filled_star.svg" alt="etoile" class="star" data-value="{{ i }}">
+                        <img src="http://static-intern-rift.westeurope.cloudapp.azure.com/img/filled_star.svg" alt="etoile" class="star" data-value="{{ i }}">
                     {% else %}
-                        <img src="/assets/img/star.svg" alt="etoile" class="star" data-value="{{ i }}">
+                        <img src="http://static-intern-rift.westeurope.cloudapp.azure.com/img/star.svg" alt="etoile" class="star" data-value="{{ i }}">
                     {% endif %}
                 {% endfor %}
             </div>
@@ -50,6 +50,6 @@
         </form>
     </section>
 
-    <script src="/assets/js/rating.js"></script>
+    <script src="http://static-intern-rift.westeurope.cloudapp.azure.com/js/rating.js"></script>
 
 {% endblock %}
