@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class User extends Model
 {
+    public $timestamps = true;
     protected $table = 'users';
     protected $fillable = [
         'first_name',
@@ -16,11 +17,16 @@ class User extends Model
     ];
     protected $hidden = ['password'];
 
-    public $timestamps = true;
-
-    public function admin(): HasOne
+    public function getRole()
     {
-        return $this->hasOne(Admin::class, 'id');
+        if ($this->student()->exists()) {
+            return 'student';
+        } elseif ($this->teacher()->exists()) {
+            return 'teacher';
+        } elseif ($this->admin()->exists()) {
+            return 'admin';
+        }
+        return null;
     }
 
     public function student(): HasOne
@@ -31,5 +37,10 @@ class User extends Model
     public function teacher(): HasOne
     {
         return $this->hasOne(Teacher::class, 'id');
+    }
+
+    public function admin(): HasOne
+    {
+        return $this->hasOne(Admin::class, 'id');
     }
 }

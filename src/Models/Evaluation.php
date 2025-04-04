@@ -7,14 +7,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Evaluation extends Model
 {
+    public $timestamps = false;
     protected $table = 'evaluations';
     protected $fillable = [
         'rating',
         'comment',
         'company_id',
     ];
-
-    public $timestamps = false;
 
     public function company(): BelongsTo
     {

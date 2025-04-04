@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Intern Rift - La faille qui vous mène aux meilleurs stages.</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="http://static-intern-rift.westeurope.cloudapp.azure.com/css/styles.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="http://static-intern-rift.westeurope.cloudapp.azure.com/img/favicon.ico">
+</head>
+
+<body class="admin__body">
+
+<nav id="adminSidebar">
+    <ul class="sidebar__list">
+        <li class="sidebar__logo__container">
+            <a href="/">
+                <img src="http://static-intern-rift.westeurope.cloudapp.azure.com/img/logo.webp" alt="Logo" class="sidebar__logo">
+            </a>
+            <button onclick="changeSidebar()" id="toggleBtn">
+                <i class="icon">keyboard_double_arrow_left</i>
+            </button>
+        </li>
+        <li {% if menu == 'dashboard' %}class="active"{% endif %}>
+            <a href="/dashboard">
+                <i class="icon">home</i>
+                <span>Accueil</span>
+            </a>
+        </li>
+        {% if user.role == 'admin' or user.role == 'teacher' %}
+            <li {% if menu == 'etudiants' %}class="active"{% endif %}>
+                <a href="/admin-etudiants">
+                    <i class="icon">school</i>
+                    <span>Etudiants</span>
+                </a>
+            </li>
+        {% endif %}
+        {% if user.role == 'admin' %}
+            <li {% if menu == 'pilotes' %}class="active"{% endif %}>
+                <a href="/admin-pilotes">
+                    <i class="icon">supervisor_account</i>
+                    <span>Pilotes</span>
+                </a>
+            </li>
+        {% endif %}
+        <li {% if menu == 'offres' %}class="active"{% endif %}>
+            {% if user.role == 'student' %}
+                <a href="/offres">
+                    <i class="icon">work</i>
+                    <span>Offres</span>
+                </a>
+            {% else %}
+            <a href="/admin-offres">
+                <i class="icon">work</i>
+                <span>Offres</span>
+            </a>
+            {% endif %}
+        </li>
+        <li {% if menu == 'entreprises' %}class="active"{% endif %}>
+            {% if user.role == 'admin' or user.role == 'teacher' %}
+            <a href="/admin-entreprises">
+                <i class="icon">factory</i>
+                <span>Entreprises</span>
+            </a>
+            {% else %}
+            <a href="/entreprises">
+                <i class="icon">factory</i>
+                <span>Entreprises</span>
+            </a>
+            {% endif %}
+        </li>
+        {% if user.role == 'admin' or user.role == 'student' %}
+            <li {% if menu == 'wishlist' %}class="active"{% endif %}>
+                <a href="/wishlist">
+                    <i class="icon">checklist</i>
+                    <span>Wishlist</span>
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+
+    <ul class="sidebar__list">
+        <li>
+            <a href="/profil">
+                <img src="https://avatar.iran.liara.run/username?username={{ user.first_name }}+{{ user.last_name }}&background=e2b043&color=fff"
+                     alt="Avatar" class="profile__picture">
+                <div class="profile__info">
+                    <span class="name">{{ user.first_name }} {{ user.last_name }}</span>
+                    <span class="email">{{ user.email }}</span>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="/deconnexion" class="logout__button">
+                <i class="icon">logout</i>
+                <span>Déconnexion</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<button class="button__primary" onclick="toggleSidebar()" id="adminHamburger">
+    <i class="icon" id="headerIcon">menu</i>
+</button>
+
+<main class="admin__main">
+    {% block content %}{% endblock %}
+</main>
+
+<script src="http://static-intern-rift.westeurope.cloudapp.azure.com/js/sidebar.js"></script>
+<script src="http://static-intern-rift.westeurope.cloudapp.azure.com/js/admin.js"></script>
+
+</body>
+</html>

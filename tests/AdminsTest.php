@@ -1,19 +1,26 @@
 <?php
 
 use App\Models\Admin;
+use App\Models\User;
 use PHPUnit\Framework\Attributes\DependsExternal;
 use PHPUnit\Framework\TestCase;
 
+require_once __DIR__ . '/../database/database.php';
 require_once __DIR__ . '/UsersTest.php';
-require_once __DIR__ . '/CompaniesTest.php';
 
-function createRandomAdmin(): Admin
+function createRandomAdmin(): ?Admin
 {
     $major = ['Informatique', 'BTP', 'Généraliste', 'Systèmes embarqués'];
     $specialization = ['IA', 'Génie civil', 'Réseaux', 'IoT', 'Cybersécurité', 'Big Data', 'DevOps', 'Cloud'];
     $office = ['B101', 'B102', 'B103', 'B104'];
 
-    $user = createRandomUser();
+    $user = User::whereDoesntHave('teacher')
+        ->whereDoesntHave('student')
+        ->whereDoesntHave('admin')
+        ->first();
+    if (!$user) {
+        return null;
+    }
 
     return Admin::create([
         'id' => $user->id,
@@ -27,18 +34,24 @@ function createRandomAdmin(): Admin
 
 class AdminsTest extends TestCase
 {
+    #[DependsExternal(UsersTest::class, 'testGetUser')]
     public static function setUpBeforeClass(): void
     {
         for ($i = 0; $i < 2; $i++) {
             createRandomAdmin();
         }
+        Admin::first()->user->update([
+            'first_name' => "Rémi",
+            'last_name' => "Porcedda",
+            'email' => "admin@cesi.fr",
+            'password' => password_hash("admin", PASSWORD_DEFAULT),
+        ]);
     }
 
-    #[DependsExternal(CompaniesTest::class, 'testGetCompany')]
+    #[DependsExternal(UsersTest::class, 'testGetUser')]
     public function testGetTeacher()
     {
         $user = Admin::first();
-
         $this->assertNotNull($user);
     }
 }

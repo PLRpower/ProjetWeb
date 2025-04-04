@@ -4,28 +4,26 @@
 
     <section class="login__container">
         <div class="login__content">
-            <form id="formLogin">
+            <form id="formLogin" method="POST" action="/connexion">
                 <h1>Connexion</h1>
                 <div class="login__input">
-                    <label for="username">Nom d'utilisateur</label>
-                    <input type="text" id="username" placeholder="martin.matin22" required>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="martin.matin@viacesi.fr" required>
                     <i class='icon'>person</i>
                 </div>
                 <div class="login__input">
                     <label for="password">Mot de passe</label>
-                    <input type="password" id="password" placeholder="***********" required>
+                    <input type="password" id="password" name="password" placeholder="***********" required>
                     <i class='icon'>lock</i>
                 </div>
-                <div class="login__forgot">
-                    <a href="#">Mot de passe oublié ?</a>
-                </div>
+                <p class="login__error" id="loginError"></p>
                 <input type="submit" class="button__primary button--small" value="Se connecter">
             </form>
         </div>
 
         <div class="login__animation">
             <div class="login__panel animation__left">
-                <img src="/assets/img/login.svg" alt="Login illustration">
+                <img src="http://static-intern-rift.westeurope.cloudapp.azure.com/img/login.svg" alt="Login illustration">
             </div>
             <div class="login__panel animation__right">
                 <h1>C'est parti !! 🚀</h1>
@@ -33,7 +31,7 @@
         </div>
     </section>
 
-    <script src="/assets/js/login.js"></script>
+    <script src="http://static-intern-rift.westeurope.cloudapp.azure.com/js/login.js"></script>
 
 
 {% endblock %}

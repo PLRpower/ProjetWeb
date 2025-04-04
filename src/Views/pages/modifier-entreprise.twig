@@ -1,0 +1,55 @@
+{% extends "sidebar.twig" %}
+
+{% block content %}
+
+    <section class="offer__container">
+        <form class="offer__content" action="/modifier-entreprise" method="POST">
+            <h2>Modifier une entreprise</h2>
+            <p>Modifier une entreprise de la plateforme.</p>
+
+            <label for="name">Nom de l'entreprise</label>
+            <input name="name" type="text" placeholder="Titre de l'entreprise" id="name" value="{{ company.name }}"
+                   required>
+
+            <label for="description">Description de l'entreprise</label>
+            <textarea name="description" id="description" placeholder="Description de l'entreprise"
+                      required>{{ company.description }}</textarea>
+
+            <label for="location">Ville de l'entreprise (siège)</label>
+            <input name="location" type="text" placeholder="Ville de l'entreprise" id="location"
+                   value="{{ company.location }}" required>
+
+            <label for="email_contact">Email de contact</label>
+            <input name="email_contact" type="email" placeholder="Email de contact" id="email_contact"
+                   value="{{ company.email_contact }}" required>
+
+            <label for="telephone_contact">Téléphone de contact</label>
+            <input name="telephone_contact" type="tel" placeholder="Téléphone de contact" id="telephone_contact"
+                   value="{{ company.telephone_contact }}" required>
+
+            <hr>
+            <h4>Avis sur l'entreprise (optionnel)</h4>
+            <label for="rating">Note de l'entreprise</label>
+            <div id="rating-container">
+                {% for i in 1..5 %}
+                    {% if i <= company.evaluation.rating %}
+                        <img src="http://static-intern-rift.westeurope.cloudapp.azure.com/img/filled_star.svg" alt="etoile" class="star" data-value="{{ i }}">
+                    {% else %}
+                        <img src="http://static-intern-rift.westeurope.cloudapp.azure.com/img/star.svg" alt="etoile" class="star" data-value="{{ i }}">
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <input type="hidden" name="rating" id="rating" value="{{ company.evaluation.rating }}">
+            <input type="hidden" name="id" id="id" value="{{ company.id }}">
+
+            <label for="comment">Commentaire sur l'entreprise</label>
+            <textarea name="comment" id="comment"
+                      placeholder="Commentaire sur l'entreprise">{{ company.evaluation.comment }}</textarea>
+
+            <input type="submit" class="button__primary button--small crud_add" value="Modifier l'entreprise">
+        </form>
+    </section>
+
+    <script src="http://static-intern-rift.westeurope.cloudapp.azure.com/js/rating.js"></script>
+
+{% endblock %}

@@ -3,6 +3,8 @@
 use App\Models\User;
 use PHPUnit\Framework\TestCase;
 
+require_once __DIR__ . '/../database/database.php';
+
 function createRandomUser(): User
 {
     $firstsNames = ['Amira', 'Sylvain', 'Hervé', 'Paul', 'Nicolas', 'Martin', 'Louis', 'Elodie', 'Jules', 'Kylian'];
@@ -22,9 +24,7 @@ class UsersTest extends TestCase
 {
     public static function setUpBeforeClass(): void
     {
-        User::query()->delete();
-
-        for ($i = 0; $i < 30; $i++) {
+        for ($i = 0; $i < 32; $i++) {
             createRandomUser();
         }
     }
@@ -32,7 +32,6 @@ class UsersTest extends TestCase
     public function testGetUser()
     {
         $user = User::first();
-
         $this->assertNotNull($user);
     }
 }

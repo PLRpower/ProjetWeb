@@ -2,8 +2,8 @@
 
 namespace App\Controllers;
 
-use App\Models\Student;
 use App\Models\User;
+use App\Utils\Auth;
 
 class UserController extends Controller
 {
@@ -13,38 +13,48 @@ class UserController extends Controller
         $this->twig = $twig;
     }
 
-    public function welcomePage(): void
+    public function connexion(): void
     {
-        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-        $perPage = 10;
-        $offset = ($page - 1) * $perPage;
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            if (Auth::isLogged()) {
+                header('Location: /dashboard');
+                exit;
+            } else {
+                echo $this->twig->render('connexion.twig');
+            }
+        } else {
+            $email = validate_input($_POST['email'], 'email');
+            $password = validate_input($_POST['password'], 'string');
 
-        $students = Student::with('user')->limit($perPage)->offset($offset)->get();
-        $total = User::count();
-        $start = $offset + 1;
-        $end = min($offset + $perPage, $total);
-
-        echo $this->twig->render(
-            'admin.twig',
-            ['students' => $students, 'total' => $total, 'start' => $start, 'end' => $end]
-        );
+            if (!$email) {
+                echo json_encode(["success" => false, "message" => "Email invalide."]);
+            } elseif (!$password) {
+                echo json_encode(["success" => false, "message" => "Le mot de passe est requis."]);
+            } else {
+                $user = User::where('email', $email)->first();
+                if ($user && password_verify($password, $user->password)) {
+                    Auth::login($user);
+                    echo json_encode(["success" => true]);
+                } else {
+                    echo json_encode(["success" => false, "message" => "Mauvais identifiant ou mot de passe."]);
+                }
+            }
+        }
     }
 
-    public function createUser(): void
+    public function deconnexion(): void
     {
-        $user = User::create([
-            'email' => 'zqdqdz@gmail.com',
-            'password' => password_hash('password', PASSWORD_DEFAULT),
-            'first_name' => 'John',
-            'last_name' => 'Doe',
-        ]);
+        Auth::logout();
+        header('Location: /');
+        exit;
+    }
 
-        $student = Student::create([
-            'id' => $user->id,
-            'promotion' => '2023',
-            'major' => 'Informatique',
-            'linkedin_url' => 'https://www.linkedin.com/in/johndoe',
-            'internship_status' => 'recherche',
-        ]);
+    public function profil(): void
+    {
+        if (Auth::isLogged()) {
+            echo $this->twig->render('profil.twig');
+        } else {
+            header('Location: /connexion');
+        }
     }
 }

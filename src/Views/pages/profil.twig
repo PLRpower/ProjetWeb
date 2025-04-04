@@ -1,0 +1,34 @@
+{% extends "sidebar.twig" %}
+
+{% block content %}
+
+    <section class="offer__container">
+        <div class="offer__content">
+
+            <img src="https://avatar.iran.liara.run/username?username={{ user.first_name }}+{{ user.last_name }}&background=e2b043&color=fff"
+                 alt="Avatar" class="profile-picture">
+
+            <h2>Votre profil</h2>
+            <p>Découvrez toutes les informations sur votre profil.</p>
+
+            <h3>Informations personnelles</h3>
+            <p><strong>Prénom :</strong> {{ user.first_name }}</p>
+
+            <p><strong>Nom :</strong> {{ user.last_name }}</p>
+
+            <p><strong>Email :</strong> {{ user.email }}</p>
+
+            <p><strong>Profil :</strong>
+                {% if user.role == 'admin' %}
+                    Administrateur
+                {% elseif user.role == 'student' %}
+                    Étudiant
+                {% else %}
+                    Pilote
+                {% endif %}
+            </p>
+
+        </div>
+    </section>
+
+{% endblock %}

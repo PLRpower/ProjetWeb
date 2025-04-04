@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Application extends Model
 {
+    public $timestamps = true;
     protected $table = 'applications';
     protected $fillable = [
         'cv',
@@ -17,7 +18,6 @@ class Application extends Model
         'offer_id',
         'student_id'
     ];
-    public $timestamps = true;
 
     public function offer(): BelongsTo
     {

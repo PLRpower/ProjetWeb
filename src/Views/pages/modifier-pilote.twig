@@ -1,0 +1,48 @@
+{% extends "sidebar.twig" %}
+
+{% block content %}
+
+    <section class="offer__container">
+        <form class="offer__content" action="/modifier-pilote" method="POST">
+            <h2>Modifier un pilote</h2>
+            <p>Modifiez un pilote de la plateforme.</p>
+
+            <label for="last_name">Nom du pilote</label>
+            <input name="last_name" type="text" placeholder="Nom du pilote" id="last_name"
+                   value="{{ teacher.user.last_name }}" required>
+
+            <label for="first_name">Prénom du pilote</label>
+            <input name="first_name" type="text" placeholder="Prénom du pilote" id="first_name"
+                   value="{{ teacher.user.first_name }}" required>
+
+            <label for="email">Email du pilote</label>
+            <input name="email" type="email" placeholder="Email du pilote" id="email" value="{{ teacher.user.email }}"
+                   required>
+
+            <label for="password">Mot de passe du pilote (ne rien écrire pour ne pas modifier)</label>
+            <input name="password" type="password" placeholder="Mot de passe du pilote" id="password"
+                   value="{{ teacher.password }}">
+
+            <label for="department">Département du pilote</label>
+            <input name="department" type="text" placeholder="Département du pilote" id="department"
+                   value="{{ teacher.department }}" required>
+
+            <label for="specialization">Spécialisation du pilote</label>
+            <input name="specialization" type="text" placeholder="Spécialisation du pilote" id="specialization"
+                   value="{{ teacher.specialization }}" required>
+
+            <label for="office">Bureau du pilote</label>
+            <input name="office" type="text" placeholder="Bureau du pilote" id="office" value="{{ teacher.office }}"
+                   required>
+
+            <label for="years_of_experience">Années d'expérience du pilote</label>
+            <input name="years_of_experience" type="number" placeholder="Années d'expérience du pilote"
+                   id="years_of_experience" value="{{ teacher.years_of_experience }}" required>
+
+            <input type="hidden" name="id" id="id" value="{{ teacher.id }}">
+
+            <input type="submit" class="button__primary button--small crud_add" value="Modifier le pilote">
+        </form>
+    </section>
+
+{% endblock %}

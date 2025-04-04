@@ -1,0 +1,51 @@
+{% extends "sidebar.twig" %}
+
+{% block content %}
+
+    <script src="http://static-intern-rift.westeurope.cloudapp.azure.com/js/chart.js"></script>
+
+    <section class="admin__container">
+        <div class="admin__content">
+            <h2>Bonjour, {{ user.first_name }} !</h2>
+            <p>Bienvenue sur votre espace {{ user.getRole() }}.</p>
+        </div>
+    </section>
+
+    <section class="admin__container">
+        <div class="admin__content">
+            <h2>Statistiques</h2>
+        </div>
+
+        <div>
+            <canvas id="myChart"></canvas>
+        </div>
+
+        <script>
+            const ctx = document.getElementById('myChart');
+            const data = {
+                labels: [
+                    'Recherche',
+                    'En cours',
+                    'Terminé'
+                ],
+                datasets: [{
+                    label: 'Etudiants',
+                    data: [{{ countSearching }}, {{ countInProgress }}, {{ countFinished }}],
+                    backgroundColor: [
+                        '#add8e6',
+                        '#d3d3d3',
+                        '#90ee90'
+                    ],
+                }]
+            };
+
+            const config = {
+                type: 'doughnut',
+                data: data,
+            };
+
+            new Chart(ctx, config);
+        </script>
+    </section>
+
+{% endblock %}

@@ -32,18 +32,26 @@ composer install
 ### 3. Créez la base de donnée
 
 Exécutez la commande suivante pour ouvrir MySQL en mode administrateur :
+
 ```bash
 sudo mysql
 ```
 
 Ensuite, exécutez le script SQL ci-dessous pour créer l'utilisateur et la base de données pour le projet :
+
 ```sql
-CREATE USER 'admin_intern_rift'@'localhost' IDENTIFIED BY 'IJ*23ioo8932JN';
-CREATE DATABASE intern_rift;
-GRANT ALL PRIVILEGES ON intern_rift.* TO 'admin_intern_rift'@'localhost';
-FLUSH PRIVILEGES;
+CREATE
+USER 'admin_intern_rift'@'localhost' IDENTIFIED BY 'IJ*23ioo8932JN';
+CREATE
+DATABASE intern_rift;
+GRANT ALL PRIVILEGES ON intern_rift.* TO
+'admin_intern_rift'@'localhost';
+FLUSH
+PRIVILEGES;
 ```
-> Note : si vous modifiez les informations du script SQL, n'oubliez pas de mettre à jour le fichier /database/database.php
+
+> Note : si vous modifiez les informations du script SQL, n'oubliez pas de mettre à jour le fichier
+> /database/database.php
 
 ### 4. Exécutez les migrations pour créer les tables nécessaires :
 
@@ -60,9 +68,10 @@ suit :
 - Models : Interaction avec la base de données.
 - Views : Templates de présentation (utilise Twig comme moteur de templates).
 
-## Tests
+## Tests & génération de données
 
-Les tests sont situés dans le dossier tests. Vous pouvez exécuter les tests avec PHPUnit :
+Les tests permettent de vérifier le bon fonctionnement de l'application et de générer des données test dans la base de
+données. Vous pouvez exécuter les tests avec PHPUnit :
 
 ```bash
 composer test

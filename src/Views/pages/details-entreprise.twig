@@ -1,0 +1,75 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+    <section class="offer__container">
+        <div class="offer__content">
+            <h2>{{ company.name }}</h2>
+            <p>{{ company.description }}</p>
+
+            {% if company.evaluation.rating %}
+                <div>
+                    {% for i in 1..5 %}
+                        {% if i <= company.evaluation.rating %}
+                            <img src="http://static-intern-rift.westeurope.cloudapp.azure.com/img/filled_star.svg" class="icon button__icon" alt="Étoile remplie">
+                        {% else %}
+                            <img src="http://static-intern-rift.westeurope.cloudapp.azure.com/img/star.svg" class="icon button__icon" alt="Étoile vide">
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <div class="offer__details">
+                <p><strong>Fondé le : </strong>{{ company.created_at|date("d/m/Y") }}</p>
+                <div class="offers__card__tags">
+                    <p>
+                        <i class="icon">location_on</i>
+                        {{ company.location }}
+                    </p>
+                    <p>
+                        <i class="icon">schedule</i>
+                        CDI
+                    </p>
+                </div>
+            </div>
+            <hr>
+            <h3>À propos de l'entreprise</h3>
+            <p>{{ company.description }}</p>
+        </div>
+        <div class="background"></div>
+    </section>
+
+    <section class="bg__200">
+        <div class="offers__container">
+            <div class="offers__header">
+                <h2>Entreprises similaires</h2>
+                <a class="button__secondary" href="/entreprises">Voir toutes les entreprises
+                    <i class="icon button__icon">arrow_forward</i>
+                </a>
+            </div>
+            <article class="offers__cards">
+                {% for company in others %}
+                    <a class="offers__card" href="/details-entreprise?id={{ company.id }}">
+                        <p class="offers__card__company">{{ company.name }}</p>
+                        <h3 class="offers__card__title">{{ company.description }}</h3>
+                        <div class="offers__card__tags">
+                            <p>
+                                <i class="icon">location_on</i>
+                                {{ company.location }}
+                            </p>
+                            <p>
+                                <i class="icon">schedule</i>
+                                Stage
+                            </p>
+                        </div>
+                        <button class="button__primary">Détails
+                            <i class="icon button__icon">arrow_forward</i>
+                        </button>
+                    </a>
+                {% endfor %}
+            </article>
+        </div>
+
+    </section>
+
+{% endblock %}

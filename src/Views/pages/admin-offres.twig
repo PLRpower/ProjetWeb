@@ -1,0 +1,77 @@
+{% extends "sidebar.twig" %}
+
+{% block content %}
+
+    <section id="popUpDeleteOverlay">
+        <div class="pop-up_delete-content">
+            <h5>Etes vous sûr de vouloir supprimer cette offre.</h5>
+            <form method="POST" id="deleteForm" action="/supprimer-offre" class=form__delete>
+                <input type="hidden" name="id" id="idOffer" value="">
+                <input type="submit" class="pop-up_delete-confirm" value="Supprimer">
+            </form>
+            <a class="pop-up_delete-exit" onclick="toggleDelete()">Annuler</a>
+        </div>
+    </section>
+
+    <section class="admin__container">
+        <div class="admin__content">
+            <h2>Gérer les offres</h2>
+            <p>Listez, modifiez et supprimez les offres de l'application.</p>
+        </div>
+    </section>
+
+    <a href="/ajouter-offre" class="button__secondary button--small button__cudr">Ajouter une offre</a>
+
+    <section class="CUDR">
+        <table>
+            <thead>
+            <tr>
+                <td>Titre</td>
+                <td>Entreprise</td>
+                <td>Description</td>
+                <td>Date de début</td>
+                <td>Durée (en mois)</td>
+                <td>Rémunération</td>
+                <td>Ville</td>
+                <td>Pays</td>
+                <td>Domaine</td>
+                <td>Niveau requis</td>
+                <td></td>
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for offer in items %}
+                <tr>
+                    <td>{{ offer.title }}</td>
+                    <td>{{ offer.company.name }}</td>
+                    <td>{{ offer.description }}</td>
+                    <td>{{ offer.start_date|date("d/m/Y") }}</td>
+                    <td>{{ offer.duration }}</td>
+                    <td>{{ offer.remuneration }}</td>
+                    <td>{{ offer.city }}</td>
+                    <td>{{ offer.country }}</td>
+                    <td>{{ offer.domain }}</td>
+                    <td>{{ offer.required_level }}</td>
+
+                    <td>
+                        <button onclick="window.location.href='/modifier-offre?id={{ offer.id }}';"
+                                class="CUDR_button edit">
+                            <i class="icon">edit</i>
+                            Modifier
+                        </button>
+
+                        <button onclick="toggleDelete({{ offer.id }})" type="submit" class="CUDR_button delete">
+                            <i class="icon">delete</i>
+                            Supprimer
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+    {% include 'pagination.twig' %}
+
+{% endblock %}

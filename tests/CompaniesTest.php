@@ -3,6 +3,8 @@
 use App\Models\Company;
 use PHPUnit\Framework\TestCase;
 
+require_once __DIR__ . '/../database/database.php';
+
 function createRandomCompany(): Company
 {
     $name = ['Google', 'Apple', 'Facebook', 'Amazon', 'Microsoft', 'Mundo Economics', 'LinkedIn', 'Moodle', 'Siemens'];
@@ -23,7 +25,7 @@ class CompaniesTest extends TestCase
 {
     public static function setUpBeforeClass(): void
     {
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 30; $i++) {
             createRandomCompany();
         }
     }
@@ -31,7 +33,6 @@ class CompaniesTest extends TestCase
     public function testGetCompany()
     {
         $user = Company::first();
-
         $this->assertNotNull($user);
     }
 }
