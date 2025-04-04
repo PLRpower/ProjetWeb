@@ -26,12 +26,13 @@
                 </form>
                 {% if user %}
                     <a href="/dashboard" id="headerLogin">
-                        <img src="/assets/img/martin.webp" alt="Avatar" class="profile__picture">
+                        <img src="https://avatar.iran.liara.run/username?username={{ user.first_name }}+{{ user.last_name }}&background=e2b043&color=fff"
+                             alt="Avatar" class="profile__picture">
                     </a>
                 {% else %}
-                <a class="button__primary button--small" href="/connexion" id="headerLogin">Se connecter
-                    <i class="icon button__icon">arrow_forward</i>
-                </a>
+                    <a class="button__primary button--small" href="/connexion" id="headerLogin">Se connecter
+                        <i class="icon button__icon">arrow_forward</i>
+                    </a>
                 {% endif %}
             </div>
         </div>

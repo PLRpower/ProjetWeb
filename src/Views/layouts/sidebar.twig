@@ -5,23 +5,8 @@
     <meta charset="UTF-8">
     <title>Intern Rift - La faille qui vous mène aux meilleurs stages.</title>
     <meta content="width=device-width, initial-scale=1" name="viewport">
-
-    <link href="/assets/css/admin.css" rel="stylesheet">
-    <link href="/assets/css/buttons.css" rel="stylesheet">
-    <link href="/assets/css/footer.css" rel="stylesheet">
-    <link href="/assets/css/header.css" rel="stylesheet">
-    <link href="/assets/css/home.css" rel="stylesheet">
-    <link href="/assets/css/icons.css" rel="stylesheet">
-    <link href="/assets/css/login.css" rel="stylesheet">
-    <link href="/assets/css/modif_profil.css" rel="stylesheet">
-    <link href="/assets/css/offers.css" rel="stylesheet">
-    <link href="/assets/css/offers-details.css" rel="stylesheet">
     <link href="/assets/css/styles.css" rel="stylesheet">
-    <link href="/assets/css/typography.css" rel="stylesheet">
-    <link href="/assets/css/wishlist.css" rel="stylesheet">
-
     <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
-
 </head>
 
 <body class="admin__body">
@@ -45,18 +30,18 @@
         {% if user.role == 'admin' or user.role == 'teacher' %}
             <li {% if menu == 'etudiants' %}class="active"{% endif %}>
                 <a href="/admin-etudiants">
-                <i class="icon">school</i>
-                <span>Etudiants</span>
-            </a>
-        </li>
+                    <i class="icon">school</i>
+                    <span>Etudiants</span>
+                </a>
+            </li>
         {% endif %}
         {% if user.role == 'admin' %}
             <li {% if menu == 'pilotes' %}class="active"{% endif %}>
                 <a href="/admin-pilotes">
-                <i class="icon">supervisor_account</i>
-                <span>Pilotes</span>
-            </a>
-        </li>
+                    <i class="icon">supervisor_account</i>
+                    <span>Pilotes</span>
+                </a>
+            </li>
         {% endif %}
         <li {% if menu == 'offres' %}class="active"{% endif %}>
             <a href="/admin-offres">
@@ -70,7 +55,7 @@
                 <span>Entreprises</span>
             </a>
         </li>
-        {% if user.role == 'student' %}
+        {% if user.role == 'admin' or user.role == 'student' %}
             <li {% if menu == 'wishlist' %}class="active"{% endif %}>
                 <a href="/wishlist">
                     <i class="icon">checklist</i>
@@ -82,8 +67,9 @@
 
     <ul class="sidebar__list">
         <li>
-            <a href="/modifier-profil">
-                <img src="/assets/img/martin.webp" alt="Avatar" class="profile__picture">
+            <a href="/profil">
+                <img src="https://avatar.iran.liara.run/username?username={{ user.first_name }}+{{ user.last_name }}&background=e2b043&color=fff"
+                     alt="Avatar" class="profile__picture">
                 <div class="profile__info">
                     <span class="name">{{ user.first_name }} {{ user.last_name }}</span>
                     <span class="email">{{ user.email }}</span>

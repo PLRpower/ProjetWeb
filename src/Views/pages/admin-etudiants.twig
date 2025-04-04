@@ -20,7 +20,7 @@
         </div>
     </section>
 
-    <button class="button__secondary button--small button__cudr">Ajouter un étudiant</button>
+    <a href="/ajouter-etudiant" class="button__secondary button--small button__cudr">Ajouter un etudiant</a>
 
     <section class="CUDR">
         <table>
@@ -39,7 +39,9 @@
             <tbody>
             {% for student in items %}
                 <tr>
-                    <td><img src="/assets/img/martin.webp" alt="{{ student.id }}" class="picto_table"></td>
+                    <td>
+                        <img src="https://ui-avatars.com/api/?name={{ student.user.first_name }}+{{ student.user.last_name }}"
+                             alt="{{ student.id }}" class="picto_table"></td>
                     <td>{{ student.user.last_name }}</td>
                     <td>{{ student.user.first_name }}</td>
                     <td>{{ student.user.email }}</td>
@@ -56,7 +58,8 @@
                     </td>
 
                     <td>
-                        <button class="CUDR_button edit">
+                        <button onclick="window.location.href='/modifier-etudiant?id={{ student.id }}';"
+                                class="CUDR_button edit">
                             <i class="icon">edit</i>
                             Modifier
                         </button>

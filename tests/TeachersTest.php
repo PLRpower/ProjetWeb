@@ -18,7 +18,9 @@ function createRandomTeacher(): ?Teacher
         ->whereDoesntHave('student')
         ->whereDoesntHave('admin')
         ->first();
-    if(!$user) {return null;}
+    if (!$user) {
+        return null;
+    }
 
     return Teacher::create([
         'id' => $user->id,

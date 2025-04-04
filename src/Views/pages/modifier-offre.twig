@@ -1,0 +1,56 @@
+{% extends "sidebar.twig" %}
+
+{% block content %}
+
+    <section class="offer__container">
+        <form class="offer__content" action="/modifier-offre" method="POST">
+            <h2>Modifier une offre</h2>
+            <p>Modifier une offre de la plateforme.</p>
+
+            <label for="title">Nom de l'offre</label>
+            <input name="title" type="text" placeholder="Titre de l'offre" id="title" value="{{ offer.title }}"
+                   required>
+
+            <label for="description">Description de l'offre</label>
+            <textarea name="description" id="description" placeholder="Description de l'offre"
+                      required>{{ offer.description }}</textarea>
+
+            <label for="start_date">Date de début</label>
+            <input name="start_date" type="date" placeholder="Date de début" id="start_date"
+                   value="{{ offer.start_date|date('Y-m-d') }}" required>
+
+            <label for="duration">Durée (en mois)</label>
+            <input name="duration" type="number" placeholder="Durée (en mois)" id="duration"
+                   value="{{ offer.duration }}" required>
+
+            <label for="remuneration">Rémunération</label>
+            <input name="remuneration" type="number" placeholder="Rémunération" id="remuneration"
+                   value="{{ offer.remuneration }}" required>
+
+            <label for="city">Ville</label>
+            <input name="city" type="text" placeholder="Ville" id="city" value="{{ offer.city }}" required>
+
+            <label for="country">Pays</label>
+            <input name="country" type="text" placeholder="Pays" id="country" value="{{ offer.country }}" required>
+
+            <label for="domain">Domaine</label>
+            <input name="domain" type="text" placeholder="Domaine" id="domain" value="{{ offer.domain }}" required>
+
+            <label for="required_level">Niveau requis</label>
+            <input name="required_level" type="text" placeholder="Niveau requis" id="required_level"
+                   value="{{ offer.required_level }}" required>
+
+            <label for="company_id">Entreprise</label>
+            <select name="company_id" id="company_id" required>
+                {% for company in companies %}
+                    <option value="{{ company.id }}">{{ company.name }}</option>
+                {% endfor %}
+            </select>
+
+            <input type="hidden" name="id" id="id" value="{{ offer.id }}">
+
+            <input type="submit" class="button__primary button--small crud_add" value="Modifier l'offre">
+        </form>
+    </section>
+
+{% endblock %}

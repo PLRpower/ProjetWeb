@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Company extends Model
 {
+    public $timestamps = true;
     protected $table = 'companies';
     protected $fillable = [
         'name',
@@ -16,7 +17,6 @@ class Company extends Model
         'email_contact',
         'telephone_contact',
     ];
-    public $timestamps = true;
 
     public function evaluation(): HasOne
     {

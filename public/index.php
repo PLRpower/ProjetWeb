@@ -73,8 +73,8 @@ switch ($url) {
     case 'details-offre':
         $offersController->detailsOffre();
         break;
-    case 'modifier-profil':
-        $userController->modifProfil();
+    case 'profil':
+        $userController->profil();
         break;
     case 'wishlist':
         $wishlistController->wishlist();
@@ -85,35 +85,8 @@ switch ($url) {
     case 'deconnexion':
         $userController->deconnexion();
         break;
-    case 'admin-entreprises':
-        $companiesController->adminEntreprises();
-        break;
-    case 'supprimer-entreprise':
-        $companiesController->supprimerEntreprise();
-        break;
-    case 'ajouter-entreprise':
-        $companiesController->ajouterEntreprise();
-        break;
-    case 'admin-pilotes':
-        $teacherController->adminPilotes();
-        break;
-    case 'supprimer-pilote':
-        $teacherController->supprimerPilote();
-        break;
     case 'recherche':
         $homeController->recherche();
-        break;
-    case 'admin-offres':
-        $offersController->adminOffres();
-        break;
-    case 'supprimer-offre':
-        $offersController->supprimerOffre();
-        break;
-    case 'admin-etudiants':
-        $studentsController->adminEtudiants();
-        break;
-    case 'supprimer-etudiant':
-        $studentsController->supprimerEtudiant();
         break;
     case 'dashboard':
         $homeController->dashboard();
@@ -121,6 +94,63 @@ switch ($url) {
     case 'postuler':
         $homeController->postuler();
         break;
+
+
+    case 'admin-entreprises':
+        $companiesController->afficher();
+        break;
+    case 'supprimer-entreprise':
+        $companiesController->supprimer();
+        break;
+    case 'ajouter-entreprise':
+        $companiesController->ajouter();
+        break;
+    case 'modifier-entreprise':
+        $companiesController->modifier();
+        break;
+
+
+    case 'admin-pilotes':
+        $teacherController->afficher();
+        break;
+    case 'supprimer-pilote':
+        $teacherController->supprimer();
+        break;
+    case 'ajouter-pilote':
+        $teacherController->ajouter();
+        break;
+    case 'modifier-pilote':
+        $teacherController->modifier();
+        break;
+
+
+    case 'admin-offres':
+        $offersController->afficher();
+        break;
+    case 'supprimer-offre':
+        $offersController->supprimer();
+        break;
+    case 'modifier-offre':
+        $offersController->modifier();
+        break;
+    case 'ajouter-offre':
+        $offersController->ajouter();
+        break;
+
+    case 'admin-etudiants':
+        $studentsController->afficher();
+        break;
+    case 'supprimer-etudiant':
+        $studentsController->supprimer();
+        break;
+    case 'modifier-etudiant':
+        $studentsController->modifier();
+        break;
+    case 'ajouter-etudiant':
+        $studentsController->ajouter();
+        break;
+
+
     default:
         $homeController->erreur(
             '404',

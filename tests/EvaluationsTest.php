@@ -11,7 +11,9 @@ require_once __DIR__ . '/CompaniesTest.php';
 function createRandomEvaluation(): ?Evaluation
 {
     $company = Company::whereDoesntHave('evaluation')->first();
-    if(!$company) {return null;}
+    if (!$company) {
+        return null;
+    }
 
     return Evaluation::create([
         'rating' => rand(1, 5),

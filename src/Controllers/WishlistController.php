@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Models\Evaluation;
 use App\Models\Offer;
 use App\Models\Wishlist;
 use App\Utils\Auth;

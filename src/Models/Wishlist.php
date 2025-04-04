@@ -7,10 +7,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Wishlist extends Model
 {
-    protected $table = 'wishlists';
-
     public $timestamps = true;
-
+    protected $table = 'wishlists';
     protected $fillable = [
         'student_id',
         'offer_id',

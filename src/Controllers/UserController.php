@@ -49,10 +49,10 @@ class UserController extends Controller
         exit;
     }
 
-    public function modifProfil(): void
+    public function profil(): void
     {
         if (Auth::isLogged()) {
-            echo $this->twig->render('modif-profil.twig');
+            echo $this->twig->render('profil.twig');
         } else {
             header('Location: /connexion');
         }

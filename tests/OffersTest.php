@@ -54,7 +54,9 @@ function createRandomOffer(): ?Offer
     $requiredLevel = ['Bac', 'Bac +2', 'Bac +3', 'Bac +4', 'Bac +5'];
 
     $company = Company::inRandomOrder()->first();;
-    if(!$company) {return null;}
+    if (!$company) {
+        return null;
+    }
 
     return Offer::create([
         'title' => $title[array_rand($title)],

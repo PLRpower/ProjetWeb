@@ -47,9 +47,9 @@
                             <div class="stars_admin">
                                 {% for i in 1..5 %}
                                     {% if i <= company.evaluation.rating %}
-                                        <img src="/assets/img/filled_star.svg" class="icon">
+                                        <img src="/assets/img/filled_star.svg" class="icon" alt="Étoile remplie">
                                     {% else %}
-                                        <img src="/assets/img/star.svg" class="icon">
+                                        <img src="/assets/img/star.svg" class="icon" alt="Étoile vide">
                                     {% endif %}
                                 {% endfor %}
                             </div>
@@ -61,7 +61,8 @@
                     <td>{{ company.telephone_contact }}</td>
 
                     <td>
-                        <button class="CUDR_button edit">
+                        <button onclick="window.location.href='/modifier-entreprise?id={{ company.id }}';"
+                                class="CUDR_button edit">
                             <i class="icon">edit</i>
                             Modifier
                         </button>

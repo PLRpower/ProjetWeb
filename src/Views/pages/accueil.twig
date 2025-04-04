@@ -56,22 +56,22 @@
         <article class="offers__cards">
             {% for offer in offers %}
                 <a class="offers__card" href="/details-offre?id={{ offer.id }}">
-                <p class="offers__card__company">{{ offer.company.name }}</p>
-                <h3 class="offers__card__title">{{ offer.title }}</h3>
-                <div class="offers__card__tags">
-                    <p>
-                        <i class="icon">location_on</i>
-                        {{ offer.city }}, {{ offer.country }}
-                    </p>
-                    <p>
-                        <i class="icon">schedule</i>
-                        Stage
-                    </p>
-                </div>
-                <button class="button__primary">Postuler
-                    <i class="icon button__icon">arrow_forward</i>
-                </button>
-            </a>
+                    <p class="offers__card__company">{{ offer.company.name }}</p>
+                    <h3 class="offers__card__title">{{ offer.title }}</h3>
+                    <div class="offers__card__tags">
+                        <p>
+                            <i class="icon">location_on</i>
+                            {{ offer.city }}, {{ offer.country }}
+                        </p>
+                        <p>
+                            <i class="icon">schedule</i>
+                            Stage
+                        </p>
+                    </div>
+                    <button class="button__primary">Postuler
+                        <i class="icon button__icon">arrow_forward</i>
+                    </button>
+                </a>
             {% endfor %}
 
         </article>

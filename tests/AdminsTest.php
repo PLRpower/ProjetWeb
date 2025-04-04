@@ -18,7 +18,9 @@ function createRandomAdmin(): ?Admin
         ->whereDoesntHave('student')
         ->whereDoesntHave('admin')
         ->first();
-    if(!$user) {return null;}
+    if (!$user) {
+        return null;
+    }
 
     return Admin::create([
         'id' => $user->id,
@@ -26,7 +28,8 @@ function createRandomAdmin(): ?Admin
         'specialization' => $specialization[array_rand($specialization)],
         'office' => $office[array_rand($office)],
         'years_of_experience' => rand(0, 20),
-    ]);}
+    ]);
+}
 
 
 class AdminsTest extends TestCase
@@ -42,7 +45,7 @@ class AdminsTest extends TestCase
             'last_name' => "Porcedda",
             'email' => "admin@cesi.fr",
             'password' => password_hash("admin", PASSWORD_DEFAULT),
-            ]);
+        ]);
     }
 
     #[DependsExternal(UsersTest::class, 'testGetUser')]

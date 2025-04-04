@@ -67,7 +67,7 @@ class HomeController extends Controller
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $search = validate_input($_POST['search'], 'string');
-        } elseif($_SERVER['REQUEST_METHOD'] === 'GET') {
+        } elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $search = validate_input($_GET['search'], 'string');
         }
 

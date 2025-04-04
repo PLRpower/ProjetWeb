@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Offer extends Model
 {
+    public $timestamps = true;
     protected $table = 'offers';
     protected $fillable = [
         'title',
@@ -21,7 +22,6 @@ class Offer extends Model
         'required_level',
         'company_id',
     ];
-    public $timestamps = true;
 
     public function company(): BelongsTo
     {

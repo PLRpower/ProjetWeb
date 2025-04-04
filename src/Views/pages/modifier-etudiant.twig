@@ -1,0 +1,74 @@
+{% extends "sidebar.twig" %}
+
+{% block content %}
+
+    <section class="offer__container">
+        <form class="offer__content" action="/modifier-etudiant" method="POST">
+            <h2>Modifier un étudiant</h2>
+            <p>Modifiez un étudiant de la plateforme.</p>
+
+            <label for="last_name">Nom de l'étudiant</label>
+            <input name="last_name" type="text" placeholder="Nom de l'étudiant" id="last_name"
+                   value="{{ student.user.last_name }}" required>
+
+            <label for="first_name">Prénom de l'étudiant</label>
+            <input name="first_name" type="text" placeholder="Prénom de l'étudiant" id="first_name"
+                   value="{{ student.user.first_name }}" required>
+
+            <label for="email">Email de l'étudiant</label>
+            <input name="email" type="email" placeholder="Email de l'étudiant" id="email"
+                   value="{{ student.user.email }}" required>
+
+            <label for="password">Mot de passe de l'étudiant (ne rien écrire pour ne pas modifier)</label>
+            <input name="password" type="password" placeholder="Mot de passe de l'étudiant" id="password"
+                   value="{{ student.password }}">
+
+            <label for="promotion">Promotion de l'étudiant</label>
+            <input name="promotion" type="text" placeholder="Promotion de l'étudiant" id="promotion"
+                   value="{{ student.promotion }}" required>
+
+            <label for="major">Majeure de l'étudiant</label>
+            <input name="major" type="text" placeholder="Majeure de l'étudiant" id="major" value="{{ student.major }}"
+                   required>
+
+            <label for="linkedin_url">URL LinkedIn de l'étudiant</label>
+            <input name="linkedin_url" type="text" placeholder="URL LinkedIn de l'étudiant" id="linkedin_url"
+                   value="{{ student.linkedin_url }}" required>
+
+            <label for="internship_status">Statut de stage de l'étudiant</label>
+            <select name="internship_status" id="internship_status" required>
+                <option value="en cours" {% if student.internship_status == 'en cours' %}selected{% endif %}>En cours
+                </option>
+                <option value="recherche" {% if student.internship_status == 'recherche' %}selected{% endif %}>
+                    Recherche
+                </option>
+                <option value="terminé" {% if student.internship_status == 'terminé' %}selected{% endif %}>Terminé
+                </option>
+            </select>
+
+            <input type="hidden" name="id" id="id" value="{{ student.id }}">
+
+            <input type="submit" class="button__primary button--small crud_add" value="Modifier l'étudiant">
+        </form>
+    </section>
+
+    <section class="offer__container">
+        <div class="offer__content">
+            <h2>Suivi de l'étudiant</h2>
+            <p>Découvrez les candidatures de l'étudiant.</p>
+            <div class="offer__list">
+                {% for application in applications %}
+                    <div class="offer__item">
+                        <h3>{{ application.offer.title }}</h3>
+                        <p class="offers__card__company">{{ application.offer.company.name }}</p>
+                        <p>{{ application.description }}</p>
+                        <p>Statut : {{ application.status }}</p>
+                        <p>Date de candidature : {{ application.application_date|date("d/m/Y") }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}

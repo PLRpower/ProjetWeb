@@ -20,7 +20,7 @@
         </div>
     </section>
 
-    <button class="button__secondary button--small button__cudr">Ajouter une offre</button>
+    <a href="/ajouter-offre" class="button__secondary button--small button__cudr">Ajouter une offre</a>
 
     <section class="CUDR">
         <table>
@@ -55,7 +55,8 @@
                     <td>{{ offer.required_level }}</td>
 
                     <td>
-                        <button class="CUDR_button edit">
+                        <button onclick="window.location.href='/modifier-offre?id={{ offer.id }}';"
+                                class="CUDR_button edit">
                             <i class="icon">edit</i>
                             Modifier
                         </button>
