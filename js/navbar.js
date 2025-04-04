@@ -16,9 +16,7 @@ function updateProgressBar() {
     const maxHeight = document.documentElement.scrollHeight - window.innerHeight;
     const currentScroll = window.scrollY;
     console.log(document.documentElement.scrollHeight);
-    const progress = (currentScroll / maxHeight) * 100;
-
-    scrollProgress.value = progress;  // Pourcentage de la page scrollée
+    scrollProgress.value = (currentScroll / maxHeight) * 100;  // Pourcentage de la page scrollée
     scrollProgress.classList.toggle("visible", currentScroll > 10);  // Faire apparaître la barre de progression après un léger scroll
     headerLogin.classList.toggle("compact", currentScroll > 10);
 }
