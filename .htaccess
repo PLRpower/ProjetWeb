@@ -1,5 +1,0 @@
-RewriteEngine On
-
-# Rediriger toutes les requêtes vers public/
-RewriteCond %{REQUEST_URI} !^/public/
-RewriteRule ^(.*)$ public/$1 [L,QSA]
