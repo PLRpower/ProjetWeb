@@ -1,0 +1,44 @@
+{% extends "sidebar.twig" %}
+
+{% block content %}
+
+
+    <section class="offer__container">
+        <div class="offer__content">
+
+            <h2>Candidater</h2>
+            <p>Vous pouvez postuler à l'offre de stage suivante :</p>
+            <h3>{{ offer.title }}</h3>
+            <p class="offer__company">{{ offer.company.name }}</p>
+            <p class="offer__location">{{ offer.city }}, {{ offer.country }}</p>
+            <p class="offer__description">{{ offer.description }}</p>
+            <p class="offer__duration">Durée : {{ offer.duration }} mois</p>
+            <p class="offer__contact">Contact : {{ offer.company.email_contact }}</p>
+
+            <hr>
+            <h3>Votre candidature</h3>
+            <form action="/postuler" method="POST" class="offer__form" enctype="multipart/form-data">
+                <input type="hidden" name="offer_id" value="{{ offer.id }}">
+                <label for="cv">CV :</label>
+                <input type="file" name="cv" id="cv" required accept=".pdf,.doc,.docx">
+
+                <label for="cover_letter">Lettre de motivation :</label>
+                <textarea name="cover_letter" id="cover_letter" rows="4" required></textarea>
+
+                <label for="email_application">Votre email de contact :</label>
+                <input type="email" name="email_application" id="email_application" value="{{ user.email }}" required>
+
+                <label for="telephone_application">Votre numéro de téléphone :</label>
+                <input type="tel" name="telephone_application" id="telephone_application" value="{{ user.telephone }}" required>
+
+                <input type="hidden" name="id" value="{{ offer.id }}">
+
+                <button type="submit" class="button__primary button--small" style="margin-top: 20px;">Postuler</button>
+            </form>
+
+        </div>
+    </section>
+
+
+
+{% endblock %}

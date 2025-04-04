@@ -15,11 +15,11 @@ class WishlistController extends Controller
 
     public function wishlist(): void
     {
-        if (Auth::checkRole(['student'])) {
+        if (Auth::checkRole(['student', 'admin'])) {
             $user = Auth::getUser();
             $wishlist = Wishlist::where('student_id', $user->id)->get();
             $paginatedWishlist = paginate($wishlist);
-            echo $this->twig->render('crud.twig', $paginatedWishlist);
+            echo $this->twig->render('wishlist.twig', $paginatedWishlist);
         } else {
             header('Location: /connexion');
         }
@@ -33,11 +33,20 @@ class WishlistController extends Controller
                 $offerId = validate_input($_POST['offer_id'], 'int');
                 $offer = Offer::findOrFail($offerId);
                 if ($offer) {
-                    Wishlist::create([
-                        'student_id' => $user->id,
-                        'offer_id' => $offerId,
-                    ]);
-                    die('Offre ajoutée à la wishlist.');
+                    $existingWishlist = Wishlist::where('student_id', $user->id)
+                        ->where('offer_id', $offerId)
+                        ->exists();
+                    if ($existingWishlist) {
+                        Wishlist::where('student_id', $user->id)
+                            ->where('offer_id', $offerId)
+                            ->delete();
+                    } else {
+                        Wishlist::create([
+                            'student_id' => $user->id,
+                            'offer_id' => $offerId,
+                        ]);
+                    }
+                    header('Location: /wishlist');
                 } else {
                     die('Offre non trouvée.');
                 }

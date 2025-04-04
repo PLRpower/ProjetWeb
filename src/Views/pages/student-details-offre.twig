@@ -1,0 +1,49 @@
+{% extends "sidebar.twig" %}
+
+{% block content %}
+
+    <section class="offer__container">
+        <div class="offer__content">
+            <h2>{{ offer.title }}</h2>
+            <p>{{ offer.description }}</p>
+
+            <form method="POST" action="/ajouter-wishlist">
+                <input type="hidden" name="offer_id" value="{{ offer.id }}">
+                <button class="button__secondary" type="submit">
+                    {% if inWishlist %}Retirer de la wishlist{% else %}Ajouter à la wishlist{% endif %}
+                    <i class="icon button__icon">star</i>
+                </button>
+            </form>
+            <div class="offer__details">
+                <p><strong>Posté le : </strong>{{ offer.created_at|date("d/m/Y") }}</p>
+                <div class="offers__card__tags">
+                    <p>
+                        <i class="icon">location_on</i>
+                        {{ offer.city }}, {{ offer.country }}
+                    </p>
+                    <p>
+                        <i class="icon">schedule</i>
+                        Stage
+                    </p>
+                </div>
+            </div>
+            <hr>
+            <h3>À propos de l'entreprise</h3>
+            <p>{{ offer.company.description }}</p>
+            <div class="offer__cta">
+                <div class="offer__cta__text">
+                    <img alt="Image Postuler" class="offer__cta__logo" src="http://static-intern-rift.westeurope.cloudapp.azure.com/img/offer.svg">
+                    <div>
+                        <h4>Postulez dès maintenant</h4>
+                        <p>En quelques clics !</p>
+                    </div>
+                </div>
+                <a class="button__primary" href="/postuler?id={{ offer.id }}">
+                    Postuler
+                    <i class="icon button__icon">arrow_forward</i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

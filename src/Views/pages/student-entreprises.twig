@@ -3,18 +3,19 @@
 {% block content %}
 
     <section class="offers__container">
-        <h2 class="text__center">Ma Wishlist</h2>
-        <p class="text__center">
-            Découvrez toutes les offres de stages que vous avez ajoutées à votre wishlist.
-        <article class="offers__cards" style="grid-template-columns: 1fr">
-            {% for wish in items %}
-                <a class="offers__card" href="/details-offre?id={{ wish.offer.id }}">
-                    <p class="offers__card__company">{{ wish.offer.company.name }}</p>
-                    <h3 class="offers__card__title">{{ wish.offer.title }}</h3>
+        <h2 class="text__center">Nos entreprises partenaires</h2>
+        <p class="text__center">Découvrez l'ensemble des entreprises qui vous proposent des stages sur notre plateforme
+            Intern Rift.</p>
+
+        <article class="offers__cards">
+            {% for company in items %}
+                <a class="offers__card" href="/details-entreprise?id={{ company.id }}">
+                    <h3 class="offers__card__title">{{ company.name }}</h3>
+                    <p class="offers__card__company">{{ company.description }}</p>
                     <div class="offers__card__tags">
                         <p>
                             <i class="icon">location_on</i>
-                            {{ wish.offer.city }}, {{ wish.offer.country }}
+                            {{ company.location }}
                         </p>
                         <p>
                             <i class="icon">schedule</i>

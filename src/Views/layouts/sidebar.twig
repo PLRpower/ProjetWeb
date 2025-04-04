@@ -44,16 +44,30 @@
             </li>
         {% endif %}
         <li {% if menu == 'offres' %}class="active"{% endif %}>
+            {% if user.role == 'student' %}
+                <a href="/offres">
+                    <i class="icon">work</i>
+                    <span>Offres</span>
+                </a>
+            {% else %}
             <a href="/admin-offres">
                 <i class="icon">work</i>
                 <span>Offres</span>
             </a>
+            {% endif %}
         </li>
         <li {% if menu == 'entreprises' %}class="active"{% endif %}>
+            {% if user.role == 'admin' or user.role == 'teacher' %}
             <a href="/admin-entreprises">
                 <i class="icon">factory</i>
                 <span>Entreprises</span>
             </a>
+            {% else %}
+            <a href="/entreprises">
+                <i class="icon">factory</i>
+                <span>Entreprises</span>
+            </a>
+            {% endif %}
         </li>
         {% if user.role == 'admin' or user.role == 'student' %}
             <li {% if menu == 'wishlist' %}class="active"{% endif %}>

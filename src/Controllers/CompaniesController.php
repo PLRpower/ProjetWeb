@@ -31,7 +31,11 @@ class CompaniesController extends Controller
     {
         $companies = Company::all();
         $paginateCompanies = paginate($companies);
-        echo $this->twig->render('entreprises.twig', $paginateCompanies);
+        if(Auth::isLogged()) {
+            echo $this->twig->render('student-entreprises.twig', $paginateCompanies);
+        } else {
+            echo $this->twig->render('entreprises.twig', $paginateCompanies);
+        }
     }
 
     public function afficher(): void

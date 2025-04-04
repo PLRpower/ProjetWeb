@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Application;
 use App\Models\Company;
 use App\Models\Offer;
 use App\Utils\Auth;
@@ -16,28 +17,40 @@ class OfferController extends Controller
     public function detailsOffre(): void
     {
         $offerId = validate_input($_GET['id'], 'int');
-
-        // SELECT * FROM offers WHERE id = $offerId
         $offer = Offer::findOrFail($offerId);
-
-        // SELECT * FROM offers WHERE id != $offerId ORDER BY created_at DESC LIMIT 2
         $offers = Offer::latest()->where('id', '!=', $offerId)->limit(2)->get();
 
-
-        echo $this->twig->render(
-            'details-offre.twig',
-            [
-                'offer' => $offer,
-                'offers' => $offers
-            ]
-        );
+        if(Auth::isLogged()) {
+            $inWishlist = Application::where('student_id', Auth::getUser()->id)
+                ->where('offer_id', $offerId)
+                ->exists();
+            echo $this->twig->render(
+                'student-details-offre.twig',
+                [
+                    'offer' => $offer,
+                    'offers' => $offers,
+                    'inWishlist' => $inWishlist,
+                ]
+            );
+        } else {
+            echo $this->twig->render(
+                'details-offre.twig',
+                [
+                    'offer' => $offer,
+                    'offers' => $offers
+                ]
+            );        }
     }
 
-    public function dernieresOffres(): void
+    public function offres(): void
     {
         $offers = Offer::all();
         $paginateOffers = paginate($offers);
-        echo $this->twig->render('dernieres-offres.twig', $paginateOffers);
+        if (Auth::isLogged()) {
+            echo $this->twig->render('student-offres.twig', $paginateOffers);
+        } else {
+            echo $this->twig->render('offres.twig', $paginateOffers);
+        }
     }
 
     public function afficher(): void

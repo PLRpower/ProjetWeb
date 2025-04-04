@@ -18,6 +18,16 @@
 
             <p><strong>Email :</strong> {{ user.email }}</p>
 
+            <p><strong>Profil :</strong>
+                {% if user.role == 'admin' %}
+                    Administrateur
+                {% elseif user.role == 'student' %}
+                    Étudiant
+                {% else %}
+                    Pilote
+                {% endif %}
+            </p>
+
         </div>
     </section>
 

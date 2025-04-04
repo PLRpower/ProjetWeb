@@ -58,11 +58,6 @@ class HomeController extends Controller
         }
     }
 
-    public function postuler(): void
-    {
-        echo $this->twig->render('applied.twig');
-    }
-
     public function recherche(): void
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

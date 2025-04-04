@@ -7,6 +7,7 @@ use App\Controllers\StudentsController;
 use App\Controllers\TeacherController;
 use App\Controllers\UserController;
 use App\Controllers\WishlistController;
+use App\Controllers\ApplicationController;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
@@ -42,18 +43,20 @@ $url = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 
 $homeController = new HomeController($twig);
 $offersController = new OfferController($twig);
-$companiesController = new CompaniesController($twig);
 $userController = new UserController($twig);
 $studentsController = new StudentsController($twig);
 $wishlistController = new WishlistController($twig);
 $teacherController = new TeacherController($twig);
+$applicationController = new ApplicationController($twig);
+$companiesController = new CompaniesController($twig);
+
 
 switch ($url) {
     case '':
         $homeController->accueil();
         break;
-    case 'dernieres-offres':
-        $offersController->dernieresOffres();
+    case 'offres':
+        $offersController->offres();
         break;
     case 'entreprises':
         $companiesController->companies();
@@ -92,7 +95,7 @@ switch ($url) {
         $homeController->dashboard();
         break;
     case 'postuler':
-        $homeController->postuler();
+        $applicationController->postuler();
         break;
 
 
