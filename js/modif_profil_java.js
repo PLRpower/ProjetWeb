@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const nameInput = document.getElementById('name');
     const emailInput = document.getElementById('email');
     const locationInput = document.getElementById('location');
@@ -73,9 +73,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if (fileInput.files && fileInput.files[0]) {
                 const reader = new FileReader();
 
-                reader.onload = function(event) {
+                reader.onload = function (event) {
                     const img = new Image();
-                    img.onload = function() {
+                    img.onload = function () {
                         profilePicture.src = event.target.result;
                         userInfoPicture.src = event.target.result;
 
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const editIcon = document.querySelector('.edit-icon');
         if (editIcon) {
-            editIcon.addEventListener('click', function(e) {
+            editIcon.addEventListener('click', function (e) {
                 e.stopPropagation();
                 openFilePicker();
             });
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Validation du nom
     if (nameInput) {
-        nameInput.addEventListener('input', function() {
+        nameInput.addEventListener('input', function () {
             if (isEmpty(nameInput)) {
                 showError(nameInput, 'Le nom est obligatoire');
             } else {
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Validation de l'e-mail
     if (emailInput) {
-        emailInput.addEventListener('input', function() {
+        emailInput.addEventListener('input', function () {
             if (isEmpty(emailInput)) {
                 showError(emailInput, 'L\'email est obligatoire');
             } else {
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Validation de la localisation
     if (locationInput) {
-        locationInput.addEventListener('input', function() {
+        locationInput.addEventListener('input', function () {
             if (isEmpty(locationInput)) {
                 showError(locationInput, 'La localisation est obligatoire');
             } else {
@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Gestionnaire d'événements pour le bouton "mettre à jour le profil"
-    verifyButton.addEventListener('click', function() {
+    verifyButton.addEventListener('click', function () {
         let isValid = true;
 
         // Validation du nom
@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function() {
             successMessage.style.textAlign = 'center';
             form.appendChild(successMessage);
 
-            setTimeout(function() {
+            setTimeout(function () {
                 successMessage.remove();
             }, 3000);
         }
